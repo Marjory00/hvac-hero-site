@@ -1,10 +1,10 @@
-
 // src/components/Sections/HeroSection.tsx
 import React from 'react';
+import Image from 'next/image'; // Import Next.js Image component
 import Link from 'next/link';
 import Heading from '@/components/UI/Typography/Heading';
 import Button from '@/components/UI/Button/Button';
-import heroStyles from './HeroSection.module.css'; // Will be created next
+import heroStyles from './HeroSection.module.css';
 
 const HeroSection: React.FC = () => {
   return (
@@ -35,9 +35,21 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
       
-      {/* Visual Placeholder for Image */}
-      <div className={heroStyles.visualPlaceholder}>
-        [Placeholder for Hero HVAC Van or Technician Image]
+      {/* ✅ Image Integration:
+        Using Next.js Image component for optimization.
+        'fill' property makes it fill the parent, 'objectFit' ensures it covers the area.
+        'priority' loads it eagerly as it's above the fold.
+      */}
+      <div className={heroStyles.heroImageContainer}>
+        <Image
+          src="/images/hvac-hero-van.png" // Adjust path if your image name/type is different
+          alt="HVAC Hero technician standing next to a branded service van outside a modern home"
+          fill // Make image fill the parent container
+          priority // Prioritize loading for LCP
+          sizes="(max-width: 992px) 100vw, 50vw" // Responsive image sizes for different viewports
+          quality={80} // Reduce quality slightly for faster load
+          style={{ objectFit: 'cover' }} // Ensures image covers the area without distorting aspect ratio
+        />
       </div>
     </section>
   );

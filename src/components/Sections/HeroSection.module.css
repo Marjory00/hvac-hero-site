@@ -1,26 +1,24 @@
-
 /* src/components/Sections/HeroSection.module.css */
 
 .hero {
   /* Set a fixed height or minimum height */
   min-height: 550px; 
-  background-color: var(--color-navy); /* Use the brand color */
+  background-color: var(--color-navy); /* Use the brand color as fallback */
   color: white;
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden; /* Contains any background elements */
+  overflow: hidden; /* Important for containing the absolute-positioned image */
   padding: var(--space-2xl) 0;
 }
 
 .heroContent {
   position: relative;
-  z-index: 10;
+  z-index: 10; /* Ensures text is above the image */
   max-width: 650px; /* Constrain text width for readability */
 }
 
 .headline {
-  /* Override global heading styles for the H1 tag */
   color: white; 
   font-size: 3rem; 
   margin-top: 0;
@@ -37,36 +35,59 @@
   display: flex;
   align-items: center;
   gap: var(--space-lg);
+  flex-wrap: wrap; /* Allow items to wrap on very small screens */
 }
 
 .phoneLink {
   color: white;
   font-weight: bold;
   font-size: 1rem;
-  white-space: nowrap;
+  white-space: nowrap; /* Prevent phone number from breaking */
+  text-decoration: none; /* Ensure no underline */
+  transition: color 0.2s ease-in-out;
 }
 
-/* Placeholder for visual element */
-.visualPlaceholder {
+.phoneLink:hover {
+  color: var(--color-sky-blue);
+}
+
+/* ✅ NEW: Container for the Next.js Image component */
+.heroImageContainer {
   position: absolute;
   top: 0;
   right: 0;
-  width: 50%;
+  width: 50%; /* Image takes up half the width */
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1; /* Puts image behind text */
 }
 
+
+/* Media Queries for Responsiveness */
 @media (max-width: 992px) {
-  /* Stack content on smaller screens */
-  .visualPlaceholder {
-    display: none;
+  .hero {
+    min-height: 450px; /* Smaller height on tablets */
+    justify-content: center; /* Center content when image is gone */
+    text-align: center;
+  }
+  .heroContent {
+    max-width: 100%; /* Allow content to take full width */
+    padding: 0 var(--space-md); /* Add horizontal padding */
+  }
+  .heroImageContainer {
+    /* Hide the image on smaller screens so content can take full width */
+    display: none; 
+  }
+  .ctaGroup {
+    justify-content: center; /* Center CTA buttons */
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 576px) {
+  .hero {
+    min-height: 400px;
+    padding: var(--space-xl) 0; /* Reduce vertical padding too */
+  }
   .headline {
     font-size: 2.2rem;
   }
@@ -74,8 +95,8 @@
     font-size: 1rem;
   }
   .ctaGroup {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack CTAs vertically */
+    align-items: center;
     gap: var(--space-md);
   }
 }

@@ -28,7 +28,12 @@
       "@/logic/pricing": [
         "src/lib/private/pricing_engine.ts",
         "src/lib/private_stubs/pricing_engine.ts" 
-      ]
+      ],
+        // ✅ NEW ALIAS: Validation Logic
+      "@/logic/validation": [
+        "src/lib/private/complex_validation.ts",
+        "src/lib/private_stubs/complex_validation.ts"
+      ],
     }
   },
   
