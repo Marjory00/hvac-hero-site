@@ -1,4 +1,3 @@
-
 // src/components/Sections/Testimonials.tsx
 import React from 'react';
 import Heading from '@/components/UI/Typography/Heading';
@@ -28,7 +27,8 @@ const Testimonials: React.FC = () => {
                 {renderStars(review.rating)}
               </p>
               <p style={{ fontStyle: 'italic', marginBottom: 'var(--space-md)' }}>
-                "{review.comment}"
+                {/* ✅ FIX: Use &ldquo; and &rdquo; (left and right double quotes) to escape the characters */}
+                &ldquo;{review.comment}&rdquo; 
               </p>
               <p style={{ fontWeight: 'bold', borderTop: '1px solid #eee', paddingTop: 'var(--space-sm)' }}>
                 — {review.name}

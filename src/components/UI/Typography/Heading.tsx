@@ -1,20 +1,26 @@
 // src/components/UI/Typography/Heading.tsx
-import React, { JSX } from 'react';
+import React, { HTMLAttributes, ReactNode, ElementType } from 'react'; // <-- Ensure ElementType is imported
 
-interface HeadingProps {
-  level: 1 | 2 | 3 | 4 | 5 | 6; // Enforces semantic HTML
-  children: React.ReactNode;
-  // You can add more props like className, style, etc., for scalability
+interface HeadingOwnProps {
+  level: 1 | 2 | 3 | 4 | 5 | 6; 
+  children: ReactNode;
 }
 
+type HeadingProps = HeadingOwnProps & HTMLAttributes<HTMLHeadingElement>; 
+
 const Heading: React.FC<HeadingProps> = ({ level, children, ...props }) => {
-  // Dynamically create the h1, h2, etc., tag
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  
+  // FIX 1: Define Tag using the ElementType utility type.
+  // This explicitly tells TypeScript that the variable will be used as a JSX component type.
+  const Tag: ElementType = `h${level}`; // The string is assigned, but the variable is typed as ElementType
 
   return (
-    <Tag {...props}>{children}</Tag>
+    // FIX 2: Type assertion is often cleaner here, confirming it's a valid HTML tag.
+    // However, since we used ElementType above, the Tag can be used directly:
+    <Tag {...props}> 
+      {children}
+    </Tag>
   );
 };
 
-// ✅ CRITICAL FIX: Ensure the default export exists
 export default Heading;
