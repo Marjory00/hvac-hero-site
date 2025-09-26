@@ -1,19 +1,31 @@
+/* src/components/UI/Button/Button.module.css */
 
 .button {
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border: none;
   border-radius: var(--radius-sm);
-  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .primary {
   background-color: var(--color-sky-blue);
   color: white;
-  border: 1px solid var(--color-sky-blue);
 }
 
 .primary:hover {
-  background-color: #006aa6; /* Slightly darker hover state */
+  background-color: var(--color-navy);
 }
-/* Add styles for .secondary and .ghost */
+
+.secondary {
+  background-color: white;
+  color: var(--color-sky-blue);
+  border: 2px solid var(--color-sky-blue);
+}
+
+.secondary:hover {
+  background-color: var(--color-sky-blue);
+  color: white;
+}
+/* Add .ghost variant styles as well */
