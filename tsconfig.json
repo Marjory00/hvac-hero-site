@@ -4,9 +4,10 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+     "allowSyntheticDefaultImports": true, // Often helps with non-JS imports
+    "esModuleInterop": true,           // Ensures compatibility with CommonJS and ES Modules//
     "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
@@ -18,10 +19,14 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".", // Must be set to the project root
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+      "@/*": ["./src/*"], 
+      "@/lib/*": ["./src/lib/*"]
+  }
+},
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js",
+   "**/*.jsx", "global.d.ts", "jest-setup.d.ts",
+  ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

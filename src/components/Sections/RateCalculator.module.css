@@ -1,0 +1,32 @@
+
+/* src/components/Sections/RateCalculator.module.css */
+.calculatorContainer {
+  padding: var(--space-xl);
+  margin: var(--space-lg) auto;
+  max-width: 800px;
+  background-color: var(--color-light-gray);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.serviceItem {
+  margin-bottom: var(--space-sm);
+  padding: var(--space-sm);
+  border-bottom: 1px solid #ddd;
+}
+
+.result {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 2px solid var(--color-sky-blue);
+  text-align: center;
+}
+
+.totalPrice {
+  font-size: 2.5rem;
+  color: var(--color-navy);
+  font-weight: 700;
+  margin: var(--space-md) 0;
+}
+
+/* .ctaButton style would reuse the primary button styles from the UI components */

@@ -1,0 +1,36 @@
+
+/* src/components/Sections/Hero.module.css */
+.heroContainer {
+  /* Use a dark theme that contrasts with your primary color */
+  background-color: var(--color-navy); 
+  color: white;
+  padding: 8rem var(--space-xl); /* Large vertical padding */
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.subheadline {
+  font-size: 1.5rem;
+  margin: var(--space-md) 0 var(--space-xl);
+  opacity: 0.9;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+/* Ensure Buttons scale up slightly in the hero */
+.ctaGroup > button {
+    padding: var(--space-md) var(--space-lg);
+    font-size: 1.1rem;
+}
