@@ -55,6 +55,7 @@ Managing complex HTML elements and props required a robust typing solution.
 
 ## 🌐 Project Structure
 
+```
 hvac-hero-site/
 ├── public/                 # Static assets (images, favicons)
 │   └── images/
@@ -76,7 +77,7 @@ hvac-hero-site/
 ├── .gitignore              # Hides .env.local and /src/lib/private
 ├── tsconfig.json           # Contains proprietary logic alias mappings
 └── README.md
-
+```
 
 ---
 
