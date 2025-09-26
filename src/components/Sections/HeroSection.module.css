@@ -1,0 +1,81 @@
+
+/* src/components/Sections/HeroSection.module.css */
+
+.hero {
+  /* Set a fixed height or minimum height */
+  min-height: 550px; 
+  background-color: var(--color-navy); /* Use the brand color */
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Contains any background elements */
+  padding: var(--space-2xl) 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  max-width: 650px; /* Constrain text width for readability */
+}
+
+.headline {
+  /* Override global heading styles for the H1 tag */
+  color: white; 
+  font-size: 3rem; 
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+.subheadline {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-xl);
+  opacity: 0.9;
+}
+
+.ctaGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.phoneLink {
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* Placeholder for visual element */
+.visualPlaceholder {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  /* Stack content on smaller screens */
+  .visualPlaceholder {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .headline {
+    font-size: 2.2rem;
+  }
+  .subheadline {
+    font-size: 1rem;
+  }
+  .ctaGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+}

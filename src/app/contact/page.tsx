@@ -1,11 +1,11 @@
 // src/app/contact/page.tsx
-
 import React from 'react';
-import { Metadata } from 'next'; // 1. Import Metadata first
+import { Metadata } from 'next'; 
 import Heading from '@/components/UI/Typography/Heading';
 import ContactForm from '@/components/Sections/ContactForm';
+import contactStyles from './contact.module.css'; // Import local styles for grid
 
-// 2. Define the static metadata after all imports
+// --- Static Metadata for SEO ---
 export const metadata: Metadata = {
   title: 'Contact HVAC Hero | Get a Free Quote & 24/7 Service',
   description: 'Request a free, no-obligation service quote or call our 24/7 emergency line. We serve the entire tri-county area with rapid, reliable HVAC service.',
@@ -34,9 +34,10 @@ export default function ContactPage() {
         Ready for heroic service? Reach out for a free quote or immediate assistance.
       </p>
 
-      {/* Grid Layout for Form and Info */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-xl)' }}>
-        {/* Left Column: Form */}
+      {/* Two-Column Grid (Responsive via contact.module.css) */}
+      <div className={contactStyles.contactGrid}>
+        
+        {/* Left Column: Form (Client Component) */}
         <div>
           <Heading level={2}>Request a Service Quote</Heading>
           <ContactForm />

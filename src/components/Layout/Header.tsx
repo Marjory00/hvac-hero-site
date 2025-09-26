@@ -1,29 +1,52 @@
 // src/components/Layout/Header.tsx
+'use client'; // Needs to be a client component if using local state/interaction, but often fine as a server component for static links
 import React from 'react';
 import Link from 'next/link';
+import Button from '@/components/UI/Button/Button';
+import headerStyles from './Header.module.css'; // Will be created in next step
 
-// Define the functional component
 const Header: React.FC = () => {
+  const navLinks = [
+    { name: 'Services', href: '/services' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Blog', href: '/blog' },
+    // 📢 NEW: The missing 'About' link
+    { name: 'About', href: '/about' }, 
+  ];
+
   return (
-    <header>
-      <nav style={{ display: 'flex', justifyContent: 'space-between', padding: 'var(--space-md)' }}>
-        {/* Logo/Site Title linking to home */}
-        <Link href="/" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--color-navy)' }}>
+    <header className={headerStyles.header}>
+      <div className={`${headerStyles.container} container`}>
+        
+        {/* Logo/Brand */}
+        <Link href="/" className={headerStyles.brand}>
           HVAC Hero
         </Link>
-        
+
         {/* Navigation Links */}
-        <div>
-          <Link href="/services" style={{ marginLeft: 'var(--space-md)' }}>Services</Link>
-          <Link href="/projects" style={{ marginLeft: 'var(--space-md)' }}>Portfolio</Link>
-          <Link href="/contact" style={{ marginLeft: 'var(--space-md)' }}>Contact</Link>
-          {/* Use your custom Button component here for the CTA */}
-          {/* <Button variant="primary">Request Quote</Button> */} 
+        <nav className={headerStyles.nav}>
+          <ul className={headerStyles.navList}>
+            {navLinks.map((link) => (
+              <li key={link.name} className={headerStyles.navItem}>
+                <Link href={link.href} className={headerStyles.navLink}>
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Primary CTA Button */}
+        <div className={headerStyles.cta}>
+          <Link href="/contact" passHref legacyBehavior>
+            <Button variant="primary" as="a">
+              Get Quote
+            </Button>
+          </Link>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };
 
-// CORRECT: Export the component as the default module export
 export default Header;

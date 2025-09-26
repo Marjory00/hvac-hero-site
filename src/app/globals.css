@@ -113,8 +113,33 @@ a:hover {
 
 /* Service Grid (specific services page grid) */
 .service-grid {
-  /* You can refine this specifically if it needs a different min-width than the general card-grid */
+  /* Retain the slightly wider min-width for service cards */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
   gap: var(--space-lg);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| 4. MOBILE RESPONSIVENESS (New Section!) 📱
+|--------------------------------------------------------------------------
+| Adjusts core layout for screens smaller than 768px (standard tablet breakpoint).
+*/
+
+@media (max-width: 768px) {
+  /* 1. Reduce large vertical padding */
+  .section-padding,
+  .section-padding-vertical {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg); 
+  }
+  
+  /* 2. Force card grids to stack */
+  .card-grid, 
+  .service-grid {
+    grid-template-columns: 1fr; 
+    gap: var(--space-md); /* Reduce gap on small screens */
+    margin-top: var(--space-lg);
+  }
 }

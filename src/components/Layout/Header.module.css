@@ -1,0 +1,62 @@
+
+/* src/components/Layout/Header.module.css */
+
+.header {
+  background-color: var(--color-navy); /* Deep blue background */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: var(--space-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: white;
+  text-decoration: none;
+}
+
+.nav {
+  /* Hides navigation on small screens initially (basic responsiveness) */
+  display: block; 
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.navLink {
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--color-sky-blue); /* Hover color */
+}
+
+/* Hide CTA on very small screens if necessary */
+.cta {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  /* Basic mobile adjustment: reduce spacing */
+  .navList {
+    gap: var(--space-md);
+  }
+}

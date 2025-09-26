@@ -39,3 +39,29 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Local Environments
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# .gitignore
+
+# 1. Hide compiled code/cache (already standard)
+.next/
+out/
+...
+
+# 2. Hide Environment Variables (already done)
+.env.local
+
+# 3. HIDE PROPRIETARY BUSINESS LOGIC
+# Add the path to the private logic folder you created
+/src/lib/private/
+/src/server_logic/ 
+
+# --- HIDE PROPRIETARY BUSINESS LOGIC FOR PORTFOLIO ---
+# Ensure your actual proprietary code is NEVER pushed
+/src/lib/private/

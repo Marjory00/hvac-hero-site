@@ -1,0 +1,44 @@
+
+/* src/components/UI/Alert/GlobalAlert.module.css */
+
+.alertContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it floats above the header */
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-out;
+  color: white; /* Default text color for alerts */
+}
+
+/* Specific Styles for Alert Types */
+.success {
+  background-color: var(--color-green);
+  border: 1px solid #218838;
+}
+
+.error {
+  background-color: var(--color-red);
+  border: 1px solid #c82333;
+}
+
+.info {
+  background-color: var(--color-sky-blue);
+  border: 1px solid #0056b3;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

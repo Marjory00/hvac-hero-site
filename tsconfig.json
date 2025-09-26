@@ -4,8 +4,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-     "allowSyntheticDefaultImports": true, // Often helps with non-JS imports
-    "esModuleInterop": true,           // Ensures compatibility with CommonJS and ES Modules//
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "strict": true,
     "noEmit": true,
     "module": "esnext",
@@ -22,11 +22,26 @@
     "baseUrl": ".", // Must be set to the project root
     "paths": {
       "@/*": ["./src/*"], 
-      "@/lib/*": ["./src/lib/*"]
-  }
-},
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js",
-   "**/*.jsx", "global.d.ts", "jest-setup.d.ts",
-  ".next/types/**/*.ts"],
+      "@/lib/*": ["./src/lib/*"],
+      
+      // ✅ FIX: This path alias is now correctly nested inside the "paths" object
+      "@/logic/pricing": [
+        "src/lib/private/pricing_engine.ts",
+        "src/lib/private_stubs/pricing_engine.ts" 
+      ]
+    }
+  },
+  
+  // ✅ FIX: The "include" and "exclude" arrays are now correctly placed outside the "compilerOptions" block
+  "include": [
+    "next-env.d.ts", 
+    "**/*.ts", 
+    "**/*.tsx", 
+    "**/*.js",
+    "**/*.jsx", 
+    "global.d.ts", 
+    "jest-setup.d.ts",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

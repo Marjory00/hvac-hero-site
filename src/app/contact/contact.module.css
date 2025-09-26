@@ -1,0 +1,15 @@
+/* src/app/contact/contact.module.css */
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+}
+
+/* Mobile Responsiveness: Stack columns below 768px */
+@media (max-width: 768px) {
+  .contactGrid {
+    grid-template-columns: 1fr; 
+    gap: var(--space-lg);
+  }
+}
