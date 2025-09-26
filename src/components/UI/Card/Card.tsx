@@ -1,22 +1,30 @@
-
 // src/components/UI/Card/Card.tsx
-import React from 'react';
-import styles from './Card.module.css'; // Assume you'll use a module for styling
+import React, { HTMLAttributes } from 'react'; // <-- Import HTMLAttributes
+import styles from './Card.module.css';
 
-interface CardProps {
+// 1. Define the component's unique props
+// Assuming you already have this basic interface
+interface CardOwnProps {
   children: React.ReactNode;
-  // Make the styles optional for flexibility
-  className?: string; 
+  className?: string; // Preserve custom classNames
 }
 
-const Card: React.FC<CardProps> = ({ children, className }) => {
+// 2. Combine unique props with all standard HTML <div> attributes.
+// FIX: Extend HTMLAttributes<HTMLDivElement> to inherit 'style', 'onClick', etc.
+type CardProps = CardOwnProps & HTMLAttributes<HTMLDivElement>;
+
+// 3. Update the Component Signature
+const Card: React.FC<CardProps> = ({ children, className, ...rest }) => {
+  // The 'rest' object now contains 'style', 'onClick', and other HTML attributes.
   return (
-    // Combine the base style with any custom styles passed in
-    <div className={`${styles.card} ${className || ''}`}>
+    // 4. Spread the 'rest' props onto the native <div> element
+    <div 
+      className={`${styles.card} ${className || ''}`}
+      {...rest} // ✅ FIX: Passes 'style' and other props through
+    >
       {children}
     </div>
   );
 };
 
-// ✅ CRITICAL FIX: Export the component as the default module export
 export default Card;

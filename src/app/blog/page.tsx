@@ -1,22 +1,39 @@
-
-// src/app/blog/page.tsx
+// src/app/page.tsx
 import React from 'react';
-import Heading from '@/components/UI/Typography/Heading';
-import { posts } from '@/lib/data/posts'; // Assuming data is created
-import PostCard from '@/components/Sections/PostCard'; // To be created
+// ... existing imports
+import Testimonials from '@/components/Sections/Testimonials';
+import CTAFooterBar from '@/components/Sections/CTAFooterBar';
+import ServiceArea from '@/components/Sections/ServiceArea'; // <-- NEW
+import FAQSection from '@/components/Sections/FAQSection'; // <-- NEW
+import RateCalculator from '@/components/Sections/RateCalculator';
+// ...
 
-export default function BlogIndexPage() {
+export default function Home() {
   return (
-    <div style={{ padding: 'var(--space-xl)', maxWidth: '1000px', margin: 'auto' }}>
-      <Heading level={1}>HVAC Hero News & Tips</Heading>
-      <p>Stay updated with the latest in energy efficiency and maintenance guides.</p>
+    <div className="home-page-layout">
+      {/* 1. HERO SECTION */}
+      {/* ... Hero component */}
+
+      {/* 2. FEATURE HIGHLIGHTS */}
+      {/* ... Feature Highlights Section ... */}
+
+      {/* 3. SERVICE AREA (Local Focus/SEO) */}
+      <ServiceArea /> 
+
+      {/* 4. SERVICE RATE CALCULATOR */}
+      <RateCalculator />
+
+      {/* 5. TESTIMONIALS */}
+      <Testimonials /> 
+
+      {/* 6. FAQ SECTION (Trust/Authority) */}
+      <FAQSection />
+
+      {/* 7. PORTFOLIO PREVIEW */}
+      {/* ... Portfolio Preview Section ... */}
       
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-lg)', marginTop: 'var(--space-xl)' }}>
-        {/* Sort by date for proper display */}
-        {posts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
-      </div>
+      {/* 8. GLOBAL CTA BAR */}
+      <CTAFooterBar /> 
     </div>
   );
 }
