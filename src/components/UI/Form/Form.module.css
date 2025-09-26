@@ -1,0 +1,21 @@
+
+/* src/components/UI/Form/Form.module.css */
+
+.formControl {
+  width: 100%;
+  padding: var(--space-md); /* Use your medium spacing variable */
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formControl:focus {
+  border-color: var(--color-sky-blue);
+  box-shadow: 0 0 0 2px rgba(65, 105, 225, 0.2); /* Light focus ring */
+  outline: none;
+}
+
+.textarea {
+  resize: vertical; /* Allow resizing vertically, but not horizontally */
+}
