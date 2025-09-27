@@ -1,23 +1,57 @@
-/* src/components/Sections/HeroSection.module.css */
+/* src/components/Sections/HeroSection.module.css (FULL-BLEED COVER FIX) */
 
 .hero {
-  /* Set a fixed height or minimum height */
-  min-height: 550px; 
-  background-color: var(--color-navy); /* Use the brand color as fallback */
-  color: white;
+  /* Set the section height */
+  min-height: 650px; 
+  
+  /* CRITICAL: Establishes context for the absolutely positioned image */
+  position: relative; 
+  /* Centers the text content horizontally and vertically over the image */
   display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden; /* Important for containing the absolute-positioned image */
+  justify-content: center; 
+  align-items: center; 
+  
+  overflow: hidden; 
+  color: white; /* Default text color over dark image */
   padding: var(--space-2xl) 0;
 }
 
-.heroContent {
-  position: relative;
-  z-index: 10; /* Ensures text is above the image */
-  max-width: 650px; /* Constrain text width for readability */
+/* ---------------------------------------------------- */
+/* 1. IMAGE CONTAINER (Full-Bleed Background) */
+/* ---------------------------------------------------- */
+.heroImageContainer {
+  /* CRITICAL FIX 1: Ensures the image covers the entire section */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  
+  height: 100%; 
+  
+  /* CRITICAL FIX 2: Ensures the image is BEHIND the text */
+  z-index: 1;    
+  overflow: hidden; 
 }
 
+/* ---------------------------------------------------- */
+/* 2. TEXT OVERLAY CONTAINER (On Top) */
+/* ---------------------------------------------------- */
+/* This class must match the name used in HeroSection.tsx: heroTextOverlay */
+.heroTextOverlay {
+  /* CRITICAL FIX 3: Ensures text is ON TOP of the image */
+  position: relative;
+  z-index: 10;   
+  
+  /* Styling for readability */
+  max-width: 800px; /* Constrain text width inside the container */
+  text-align: center;
+  background-color: rgba(12, 23, 40, 0.85); /* Semi-transparent overlay */
+  padding: var(--space-2xl); 
+  border-radius: var(--radius-md); 
+}
+
+/* ---------------------------------------------------- */
+/* 3. TYPOGRAPHY & CTA STYLES (Standard) */
+/* ---------------------------------------------------- */
 .headline {
   color: white; 
   font-size: 3rem; 
@@ -34,16 +68,17 @@
 .ctaGroup {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center CTAs within the text block */
   gap: var(--space-lg);
-  flex-wrap: wrap; /* Allow items to wrap on very small screens */
+  flex-wrap: wrap; 
 }
 
 .phoneLink {
   color: white;
   font-weight: bold;
   font-size: 1rem;
-  white-space: nowrap; /* Prevent phone number from breaking */
-  text-decoration: none; /* Ensure no underline */
+  white-space: nowrap; 
+  text-decoration: none; 
   transition: color 0.2s ease-in-out;
 }
 
@@ -51,42 +86,36 @@
   color: var(--color-sky-blue);
 }
 
-/* ✅ NEW: Container for the Next.js Image component */
-.heroImageContainer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%; /* Image takes up half the width */
-  height: 100%;
-  z-index: 1; /* Puts image behind text */
-}
 
+/* ---------------------------------------------------- */
+/* 4. MEDIA QUERIES (Responsiveness) */
+/* ---------------------------------------------------- */
 
-/* Media Queries for Responsiveness */
 @media (max-width: 992px) {
   .hero {
-    min-height: 450px; /* Smaller height on tablets */
-    justify-content: center; /* Center content when image is gone */
-    text-align: center;
+    min-height: 550px; 
   }
-  .heroContent {
-    max-width: 100%; /* Allow content to take full width */
-    padding: 0 var(--space-md); /* Add horizontal padding */
-  }
+  
   .heroImageContainer {
-    /* Hide the image on smaller screens so content can take full width */
-    display: none; 
+    /* Image stays, but may be scaled differently */
+    display: block; 
   }
+  
+  .heroTextOverlay {
+    /* Simplify overlay for smaller screens */
+    padding: var(--space-xl);
+    background-color: rgba(12, 23, 40, 0.7); 
+  }
+  
   .ctaGroup {
-    justify-content: center; /* Center CTA buttons */
-    margin: 0 auto;
+    justify-content: center; 
   }
 }
 
 @media (max-width: 576px) {
   .hero {
     min-height: 400px;
-    padding: var(--space-xl) 0; /* Reduce vertical padding too */
+    padding: var(--space-xl) 0; 
   }
   .headline {
     font-size: 2.2rem;
@@ -95,7 +124,7 @@
     font-size: 1rem;
   }
   .ctaGroup {
-    flex-direction: column; /* Stack CTAs vertically */
+    flex-direction: column; 
     align-items: center;
     gap: var(--space-md);
   }

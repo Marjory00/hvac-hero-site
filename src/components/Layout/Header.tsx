@@ -1,16 +1,15 @@
 // src/components/Layout/Header.tsx
-'use client'; // Needs to be a client component if using local state/interaction, but often fine as a server component for static links
+'use client'; 
 import React from 'react';
 import Link from 'next/link';
 import Button from '@/components/UI/Button/Button';
-import headerStyles from './Header.module.css'; // Will be created in next step
+import headerStyles from './Header.module.css';
 
 const Header: React.FC = () => {
   const navLinks = [
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
     { name: 'Blog', href: '/blog' },
-    // 📢 NEW: The missing 'About' link
     { name: 'About', href: '/about' }, 
   ];
 
@@ -38,8 +37,13 @@ const Header: React.FC = () => {
 
         {/* Primary CTA Button */}
         <div className={headerStyles.cta}>
-          <Link href="/contact" passHref legacyBehavior>
-            <Button variant="primary" as="a">
+          {/* FIX: Removed 'as="a"' from Button. 
+            The Next.js Link component now renders the <a> tag, and the Button component 
+            can safely render its default tag (likely a <button> or <span>) inside. 
+            This resolves the invalid <a> nested in <a> hydration error.
+          */}
+          <Link href="/contact" className={headerStyles.linkButton}>
+            <Button variant="primary">
               Get Quote
             </Button>
           </Link>
