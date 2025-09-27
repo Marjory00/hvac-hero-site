@@ -2,7 +2,7 @@
 
 **Portfolio Project By: Marjory D. Marquez, Software Engineer**
 
-This project is a comprehensive **case study** demonstrating the architecture and development of a high-performance, responsive service platform for a fictional regional HVAC company. Utilizing **Next.js 14 (App Router)** and **TypeScript**, this application showcases advanced software engineering practices, clean code, and solutions to real-world deployment and state management challenges.
+This project is a comprehensive **case study** demonstrating the architecture and development of a high-performance, responsive service platform for a regional HVAC company. Utilizing **Next.js 14 (App Router)** and **TypeScript**, this application showcases advanced software engineering practices, clean code, and solutions to real-world deployment and state management challenges.
 
 ***
 
