@@ -9,6 +9,8 @@ const Header: React.FC = () => {
   const navLinks = [
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
+    // 💡 ADDED: Link to the new estimator page
+    { name: 'Estimator', href: '/estimator' }, 
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' }, 
   ];
@@ -37,11 +39,7 @@ const Header: React.FC = () => {
 
         {/* Primary CTA Button */}
         <div className={headerStyles.cta}>
-          {/* FIX: Removed 'as="a"' from Button. 
-            The Next.js Link component now renders the <a> tag, and the Button component 
-            can safely render its default tag (likely a <button> or <span>) inside. 
-            This resolves the invalid <a> nested in <a> hydration error.
-          */}
+          {/* Link component remains correctly structured after previous fixes */}
           <Link href="/contact" className={headerStyles.linkButton}>
             <Button variant="primary">
               Get Quote

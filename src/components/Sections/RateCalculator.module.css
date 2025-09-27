@@ -1,32 +1,115 @@
-
 /* src/components/Sections/RateCalculator.module.css */
-.calculatorContainer {
-  padding: var(--space-xl);
-  margin: var(--space-lg) auto;
-  max-width: 800px;
-  background-color: var(--color-light-gray);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+.calculatorForm {
+  background-color: var(--color-background);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
-.serviceItem {
+/* Input Layout (4 columns on desktop) */
+.inputGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: 600;
   margin-bottom: var(--space-sm);
-  padding: var(--space-sm);
-  border-bottom: 1px solid #ddd;
-}
-
-.result {
-  margin-top: var(--space-lg);
-  padding-top: var(--space-md);
-  border-top: 2px solid var(--color-sky-blue);
-  text-align: center;
-}
-
-.totalPrice {
-  font-size: 2.5rem;
   color: var(--color-navy);
-  font-weight: 700;
-  margin: var(--space-md) 0;
 }
 
-/* .ctaButton style would reuse the primary button styles from the UI components */
+.input,
+.select,
+.textarea {
+  padding: var(--space-md);
+  border: 1px solid var(--color-mid-grey);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--color-sky-blue);
+  outline: none;
+}
+
+.notesGroup {
+  margin-bottom: var(--space-2xl);
+}
+
+/* Output and Button Area */
+.outputArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allows stacking on mobile */
+  gap: var(--space-lg);
+  border-top: 1px dashed var(--color-border);
+  padding-top: var(--space-lg);
+}
+
+.estimateBox {
+  flex-shrink: 0;
+}
+
+.estimateLabel {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.estimateValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-sky-blue);
+  margin: 0;
+}
+
+.calculateButton {
+  /* Button styles inherited from '@/components/UI/Button/Button' */
+  padding: var(--space-md) var(--space-xl);
+}
+
+.submittedNotes {
+    margin-top: var(--space-2xl);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-light-grey);
+    color: var(--color-text-secondary);
+}
+
+.submittedNotes h5 {
+    color: var(--color-navy);
+    margin-top: 0;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .calculatorForm {
+    padding: var(--space-lg);
+  }
+  .outputArea {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .estimateBox {
+    width: 100%;
+    margin-bottom: var(--space-md);
+  }
+  .estimateValue {
+    font-size: 2rem;
+  }
+}
