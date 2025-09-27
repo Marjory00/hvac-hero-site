@@ -97,7 +97,7 @@ const EstimatorPage: React.FC = () => {
             <div className={styles.solutionGrid}>
                 <div className={styles.solutionCard}>
                     <Heading level={3}>Furnace & Boiler Solutions</Heading>
-                    <p>Ideal for northern climates. We assess your home's heat loss to ensure proper BTU matching for maximum efficiency. Choose from single-stage to modulating systems.</p>
+                    <p>Ideal for northern climates. We assess your home&apos;s heat loss to ensure proper BTU matching for maximum efficiency. Choose from single-stage to modulating systems.</p>
                 </div>
                 <div className={styles.solutionCard}>
                     <Heading level={3}>AC & Heat Pump Systems</Heading>

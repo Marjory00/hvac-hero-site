@@ -1,0 +1,77 @@
+
+/* src/app/blog/BlogList.module.css */
+
+.main {
+  background-color: var(--color-background-secondary);
+}
+
+.pageTitle {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+.introText {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-xl);
+}
+
+.cardLink {
+  text-decoration: none;
+  display: block;
+}
+
+.card {
+  background-color: var(--color-background);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.cardContent {
+  padding: var(--space-lg);
+}
+
+.category {
+  color: var(--color-sky-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  color: var(--color-navy);
+}
+
+.excerpt {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  font-size: 0.95rem;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--color-mid-grey);
+}

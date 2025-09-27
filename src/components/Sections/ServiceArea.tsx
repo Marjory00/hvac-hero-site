@@ -1,42 +1,63 @@
-
 // src/components/Sections/ServiceArea.tsx
 import React from 'react';
 import Heading from '@/components/UI/Typography/Heading';
+import Button from '@/components/UI/Button/Button';
+import Link from 'next/link';
+import styles from './ServiceArea.module.css';
+
+// Mock data for the service area
+const primaryServiceCities = ['City A', 'City B', 'City C', 'City D', 'City E'];
+const primaryServiceCounties = ['County X', 'County Y'];
 
 const ServiceArea: React.FC = () => {
-  // Define key cities/areas you serve
-  const serviceLocations = [
-    'City A', 'City B', 'Town C', 'Suburb D', 'Metro Area E',
-  ];
-
   return (
-    <section style={{ padding: 'var(--space-xl) 0', textAlign: 'center' }}>
-      <div className="container" style={{ maxWidth: '1200px', margin: 'auto' }}>
-        <Heading level={2}>Serving Your Neighborhood with Heroic Reliability</Heading>
-        <p style={{ maxWidth: '800px', margin: '1rem auto 2rem' }}>
-          We proudly serve the entire tri-county area, offering rapid, same-day service across all major metropolitan and suburban regions.
-        </p>
+    <section className={`${styles.serviceAreaSection} section-padding`}>
+      <div className="container">
+        
+        <div className={styles.contentGrid}>
+          
+          <div className={styles.textContent}>
+            <Heading level={2} className={styles.sectionTitle}>
+              Proudly Serving Your Local Community
+            </Heading>
+            <p className={styles.introText}>
+              HVAC Hero provides certified, rapid-response heating and cooling services across the entire tri-county region. When you need dependable service, we&apos;re just minutes away.
+            </p>
 
-        {/* Placeholder for Map Visual */}
-        <div style={{ height: '350px', backgroundColor: '#e0f7fa', border: '1px solid #b2ebf2', marginBottom: 'var(--space-lg)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          [Placeholder for Interactive Service Area Map Visual]
-        </div>
+            <Heading level={3} className={styles.listTitle}>
+              Primary Service Cities Include:
+            </Heading>
+            <ul className={styles.cityList}>
+              {primaryServiceCities.map((city) => (
+                <li key={city} className={styles.cityItem}>{city}</li>
+              ))}
+            </ul>
 
-        <Heading level={3}>Key Service Locations</Heading>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'var(--space-md)' }}>
-          {serviceLocations.map((location) => (
-            <span 
-              key={location} 
-              style={{ 
-                padding: '0.5rem 1rem', 
-                backgroundColor: 'var(--color-light-gray)', 
-                borderRadius: 'var(--radius-sm)',
-                fontWeight: '500'
-              }}
-            >
-              {location}
-            </span>
-          ))}
+            <p className={styles.countyText}>
+              We also service **{primaryServiceCounties.join(' and ')}**. If your area isn&apos;t listed, contact us directly!
+            </p>
+
+            <Link href="/contact">
+              {/* Note: The className prop on Button here is usually passed to the internal element. 
+                 It's correctly structured and safe inside the Link component. */}
+              <Button variant="primary" className={styles.checkAreaButton}>
+                Check Availability in My Area
+              </Button>
+            </Link>
+          </div>
+          
+          <div className={styles.mapContainer}>
+            {/* 💡 Map Placeholder: 
+              In a real project, this would be an embedded Google Map 
+              or a static image of the service region with clear boundaries. 
+            */}
+            <div className={styles.mapPlaceholder}>
+              [Interactive Map of Service Region Placeholder]
+            </div>
+            <p className={styles.mapCaption}>
+              See our dedicated service region. Fast response guaranteed within the blue zone.
+            </p>
+          </div>
         </div>
       </div>
     </section>

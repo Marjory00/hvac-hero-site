@@ -1,59 +1,78 @@
-// src/app/blog/[slug]/page.tsx
+// src/app/blog/[slug]/page.tsx (Server Component)
 import React from 'react';
-import { notFound } from 'next/navigation';
-// CRITICAL: Import Metadata for dynamic SEO
-import { Metadata } from 'next'; 
-import { posts } from '@/lib/data/posts';
+import { getPostBySlug, getPosts, generateMetadataForPost } from '@/lib/data/blogData';
 import Heading from '@/components/UI/Typography/Heading';
-import { Post } from '@/lib/types/blog';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import styles from './BlogPost.module.css';
+import Link from 'next/link';
 
-interface PostPageProps {
-  params: { slug: string };
-}
-
-// --- Dynamic Metadata Function ---
-// This function runs on the server to generate unique metadata for each blog post.
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
-  const post = posts.find((p) => p.slug === params.slug);
-
-  if (!post) {
-    return {
-      title: 'Post Not Found | HVAC Hero',
-    };
-  }
-
-  return {
-    title: `${post.title} | HVAC Hero Blog`,
-    description: post.summary, // Assuming your Post type includes a 'summary' field
-  };
-}
-// ---------------------------------
-
+// 1. Static Paths Generation (for build time optimization)
 export async function generateStaticParams() {
-  return posts.map((post) => ({
+  const posts = await getPosts();
+  return posts.map(post => ({
     slug: post.slug,
   }));
 }
 
-export default function PostDetail({ params }: PostPageProps) {
-  const post: Post | undefined = posts.find(p => p.slug === params.slug);
+// 2. Dynamic Metadata Generation
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const post = await getPostBySlug(params.slug);
+  if (!post) {
+    return { title: 'Post Not Found' };
+  }
+  return generateMetadataForPost(post);
+}
+
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
-    notFound();
+    // Renders the standard Next.js 404 page
+    notFound(); 
   }
 
-  // Refactoring inline styles to use global classes where applicable for design consistency
-  return (
-    <article className="section-padding container" style={{ maxWidth: '800px' }}>
-      <Heading level={1}>{post.title}</Heading>
-      <div style={{ margin: 'var(--space-md) 0', fontSize: '1rem', color: 'var(--color-text-secondary)' }}>
-        <p>By {post.author} | Published on {post.date}</p>
-      </div>
+  const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
 
-      <div style={{ marginTop: 'var(--space-lg)', lineHeight: 1.8 }}>
-        <p>{post.content}</p> 
-        {/* In a real scenario, you'd render this using a Markdown component */}
-      </div>
-    </article>
+  return (
+    <main className={styles.main}>
+      <article className="container">
+        
+        <header className={styles.header}>
+          <p className={styles.category}>{post.category}</p>
+          <Heading level={1} className={styles.title}>{post.title}</Heading>
+          <p className={styles.meta}>
+            By **{post.author}** on {formattedDate}
+          </p>
+        </header>
+        
+        <div className={styles.imageWrapper}>
+            <Image 
+                src={post.imageUrl || '/images/blog/default.jpg'}
+                alt={post.title}
+                fill
+                priority
+                sizes="100vw"
+                style={{ objectFit: 'cover' }}
+            />
+        </div>
+
+        <div 
+          className={styles.content} 
+          // ⚠️ SECURITY WARNING: In a real application, content should be sanitized 
+          // (e.g., using a library like DOMPurify) before using dangerouslySetInnerHTML.
+          dangerouslySetInnerHTML={{ __html: post.content }} 
+        />
+        
+        <div className={styles.cta}>
+          <Link href="/blog">
+            Back to All Articles
+          </Link>
+        </div>
+
+      </article>
+    </main>
   );
 }
