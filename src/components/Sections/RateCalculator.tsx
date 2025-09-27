@@ -6,19 +6,40 @@ import Button from '@/components/UI/Button/Button';
 import Heading from '@/components/UI/Typography/Heading';
 import styles from './RateCalculator.module.css';
 
-// Define the type for the component's state
+// Define service types for robust typing
+type ServiceType = 'furnace' | 'ac' | 'heatPump' | 'boiler';
+
+// Define the type for the component's state, including the new serviceType
 interface CalculationState {
   squareFootage: number;
+  serviceType: ServiceType; // ADDED: Field for selecting the service
   equipmentTier: 'standard' | 'premium' | 'high-efficiency';
   installationType: 'new' | 'replacement';
   notes: string;
 }
 
-// Define mock base costs for different scenarios
-const BASE_COSTS = {
-  standard: { new: 6500, replacement: 4000 },
-  premium: { new: 9000, replacement: 6500 },
-  'high-efficiency': { new: 12000, replacement: 8500 },
+// Define mock base costs structured by ServiceType -> EquipmentTier -> InstallationType
+const BASE_COSTS: Record<ServiceType, Record<CalculationState['equipmentTier'], Record<CalculationState['installationType'], number>>> = {
+  furnace: {
+    standard: { new: 5000, replacement: 3000 },
+    premium: { new: 7500, replacement: 5500 },
+    'high-efficiency': { new: 10000, replacement: 8000 },
+  },
+  ac: {
+    standard: { new: 6000, replacement: 3500 },
+    premium: { new: 8500, replacement: 6000 },
+    'high-efficiency': { new: 11000, replacement: 8500 },
+  },
+  heatPump: {
+    standard: { new: 7000, replacement: 4500 },
+    premium: { new: 9500, replacement: 7000 },
+    'high-efficiency': { new: 13000, replacement: 10000 },
+  },
+  boiler: {
+    standard: { new: 4500, replacement: 2500 },
+    premium: { new: 7000, replacement: 4500 },
+    'high-efficiency': { new: 9500, replacement: 6500 },
+  }
 };
 
 const COST_PER_SQ_FT = 2.5; // Example variable cost factor
@@ -26,6 +47,7 @@ const COST_PER_SQ_FT = 2.5; // Example variable cost factor
 const RateCalculator: React.FC = () => {
   const [state, setState] = useState<CalculationState>({
     squareFootage: 1800,
+    serviceType: 'ac', // INITIALIZED: Set a default service type
     equipmentTier: 'standard',
     installationType: 'replacement',
     notes: '',
@@ -37,16 +59,17 @@ const RateCalculator: React.FC = () => {
     
     setState(prevState => ({
       ...prevState,
-      // Convert value to number if the input type is number
+      // Ensure numerical conversion for the squareFootage field
       [name]: type === 'number' ? parseFloat(value) || 0 : value,
     }));
   };
 
   const calculateEstimate = () => {
-    const { squareFootage, equipmentTier, installationType } = state;
+    const { squareFootage, serviceType, equipmentTier, installationType } = state; // DESTRUCTURE: Get serviceType
 
-    // 1. Calculate Base Cost based on Tiers and Type
-    const baseCost = BASE_COSTS[equipmentTier][installationType];
+    // 1. Calculate Base Cost based on Service, Tiers, and Type
+    // FIX: Accessing the nested object structure using all three keys
+    const baseCost = BASE_COSTS[serviceType][equipmentTier][installationType]; 
 
     // 2. Calculate Variable Cost based on Square Footage
     const variableCost = squareFootage * COST_PER_SQ_FT;
@@ -87,7 +110,24 @@ const RateCalculator: React.FC = () => {
     <form onSubmit={handleSubmit} className={styles.calculatorForm}>
       <div className={styles.inputGrid}>
         
-        {/* Input 1: Square Footage */}
+        {/* NEW INPUT 1: Service Type */}
+        <div className={styles.inputGroup}>
+          <label htmlFor="serviceType" className={styles.label}>Select Primary Service</label>
+          <select
+            id="serviceType"
+            name="serviceType"
+            value={state.serviceType}
+            onChange={handleChange}
+            className={styles.select}
+          >
+            <option value="ac">Central Air Conditioning (AC)</option>
+            <option value="furnace">Gas/Electric Furnace</option>
+            <option value="heatPump">Heat Pump System</option>
+            <option value="boiler">Boiler (Hot Water/Steam)</option>
+          </select>
+        </div>
+        
+        {/* Input 2: Square Footage */}
         <div className={styles.inputGroup}>
           <label htmlFor="squareFootage" className={styles.label}>Total Square Footage</label>
           <input
@@ -102,7 +142,7 @@ const RateCalculator: React.FC = () => {
           />
         </div>
 
-        {/* Input 2: Installation Type */}
+        {/* Input 3: Installation Type */}
         <div className={styles.inputGroup}>
           <label htmlFor="installationType" className={styles.label}>Project Type</label>
           <select
@@ -117,7 +157,7 @@ const RateCalculator: React.FC = () => {
           </select>
         </div>
 
-        {/* Input 3: Equipment Tier */}
+        {/* Input 4: Equipment Tier */}
         <div className={styles.inputGroup}>
           <label htmlFor="equipmentTier" className={styles.label}>Equipment Tier</label>
           <select
@@ -132,15 +172,9 @@ const RateCalculator: React.FC = () => {
             <option value="high-efficiency">High-Efficiency (18+ SEER, Smart Controls)</option>
           </select>
         </div>
-        
-        {/* Placeholder for a fourth input if needed (e.g., location, complexity) */}
-        <div className={styles.inputGroup}>
-          <label className={styles.label}>Custom Specifications</label>
-          <input disabled type="text" placeholder="Future input field..." className={styles.input} />
-        </div>
       </div>
 
-      {/* Input 4: Notes/Comments (full width) */}
+      {/* Input 5: Notes/Comments (full width) */}
       <div className={styles.notesGroup}>
         <label htmlFor="notes" className={styles.label}>Additional Notes or Specific Requirements</label>
         <textarea

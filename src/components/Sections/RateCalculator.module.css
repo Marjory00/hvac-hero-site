@@ -10,7 +10,8 @@
 /* Input Layout (4 columns on desktop) */
 .inputGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Ensures at least 4 inputs fit on wide screens, but keeps min width high enough */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
   gap: var(--space-lg);
   margin-bottom: var(--space-lg);
 }
@@ -30,17 +31,20 @@
 .select,
 .textarea {
   padding: var(--space-md);
-  border: 1px solid var(--color-mid-grey);
+  /* Using --color-mid-grey/--color-text-secondary for border */
+  border: 1px solid var(--color-mid-grey, #ccc); 
   border-radius: var(--radius-md);
   font-size: 1rem;
   width: 100%;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input:focus,
 .select:focus,
 .textarea:focus {
   border-color: var(--color-sky-blue);
+  /* Added a focus box shadow for better accessibility */
+  box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.2); 
   outline: none;
 }
 
@@ -53,9 +57,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Allows stacking on mobile */
+  flex-wrap: wrap; 
   gap: var(--space-lg);
-  border-top: 1px dashed var(--color-border);
+  /* Using --color-mid-grey/--color-border for the separator */
+  border-top: 1px dashed var(--color-border, #ccc); 
   padding-top: var(--space-lg);
 }
 
@@ -77,22 +82,25 @@
 }
 
 .calculateButton {
-  /* Button styles inherited from '@/components/UI/Button/Button' */
-  padding: var(--space-md) var(--space-xl);
+  /* Inherits size from Button component, but ensures minimum width */
+  min-width: 200px; 
 }
 
 .submittedNotes {
-    margin-top: var(--space-2xl);
-    padding: var(--space-md);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background-color: var(--color-light-grey);
-    color: var(--color-text-secondary);
+  margin-top: var(--space-2xl);
+  padding: var(--space-md);
+  /* Using --color-border and --color-light-grey for consistency */
+  border: 1px solid var(--color-border, #dee2e6); 
+  border-radius: var(--radius-md);
+  background-color: var(--color-light-grey);
+  color: var(--color-text-secondary);
 }
 
 .submittedNotes h5 {
-    color: var(--color-navy);
-    margin-top: 0;
+  color: var(--color-navy);
+  /* Ensure proper spacing by using CSS variable */
+  margin-top: 0; 
+  margin-bottom: var(--space-sm);
 }
 
 /* Mobile Adjustments */
@@ -103,11 +111,13 @@
   .outputArea {
     flex-direction: column;
     align-items: stretch;
-    text-align: center;
+    /* Removed text-align: center here as it might conflict with .estimateBox,
+       relying on the estimateBox style instead for centered text. */
   }
   .estimateBox {
     width: 100%;
     margin-bottom: var(--space-md);
+    text-align: center; /* Ensure estimate is centered on mobile */
   }
   .estimateValue {
     font-size: 2rem;
