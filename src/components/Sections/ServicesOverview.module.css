@@ -1,0 +1,84 @@
+
+/* src/components/Sections/ServicesOverview.module.css */
+
+.servicesSection {
+    background-color: var(--color-white);
+}
+
+.sectionTitle {
+    color: var(--color-primary-dark);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+    color: var(--color-text-light);
+    font-size: 1.15rem;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background: var(--color-off-white);
+    padding: 2rem;
+    border-radius: var(--border-radius, 10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    text-align: center;
+    border-top: 4px solid var(--color-accent);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.cardTitle {
+    font-size: 1.35rem;
+    color: var(--color-heading);
+    margin-bottom: 0.75rem;
+}
+
+.summary {
+    color: var(--color-text-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.finalCta {
+    padding: 2rem;
+    background-color: var(--color-secondary-light, #f0f7ff);
+    border-radius: var(--border-radius, 8px);
+    margin-top: 2rem;
+}
+
+.finalCta p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .servicesSection {
+        padding: 3rem 0;
+    }
+    .sectionTitle {
+        font-size: 2rem;
+    }
+}

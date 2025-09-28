@@ -1,23 +1,34 @@
-// src/app/page.tsx
+// src/app/page.tsx (Home Page Server Component)
+
+// Ensure this path is correct and matches the file's physical location
 import HeroSection from '@/components/Sections/HeroSection';
-import FeatureHighlights from '@/components/Sections/FeatureHighlights';
-// REMOVED: import RateCalculator from '@/components/Sections/RateCalculator'; 
+import FeatureHighlights from '@/components/Sections/FeatureHighlights'; // <-- CORRECT IMPORT
+import ServicesOverview from '@/components/Sections/ServicesOverview'; 
 import Testimonials from '@/components/Sections/Testimonials'; 
-import ServiceArea from '@/components/Sections/ServiceArea'; 
 import FAQSection from '@/components/Sections/FAQSection';
 import CTAFooterBar from '@/components/Sections/CTAFooterBar';
 
 export default function Home() {
-  return (
-    <main className="home-page-layout"> {/* Changed <div> to <main> for better semantics */}
-      <HeroSection />
-      <FeatureHighlights />
-      <ServiceArea /> 
-      {/* REMOVED: <RateCalculator /> */}
-      <Testimonials /> 
-      <FAQSection />
-      {/* Portfolio Preview and Blog Preview sections would go here if created */}
-      <CTAFooterBar /> 
-    </main>
-  );
+    return (
+        <main className="home-page-layout">
+            {/* 1. Hero Section */}
+            <HeroSection />
+
+            {/* 2. Feature Highlights: This is the correct, top-level placement 
+            for immediate trust-building on the home page. */}
+            <FeatureHighlights /> 
+            
+            {/* 3. Core Offerings */}
+            <ServicesOverview /> 
+            
+            {/* 4. Trust/Social Proof */}
+            <Testimonials /> 
+            
+            {/* 5. Authority/Information */}
+            <FAQSection />
+
+            {/* 6. Final Conversion Point */}
+            <CTAFooterBar /> 
+        </main>
+    );
 }

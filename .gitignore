@@ -74,6 +74,7 @@ src/app/services/page.tsx
 src/app/components/ServiceArea
 src/app/components/ServiceArea/ServiceAreaSection.tsx
 src/app/components/ServiceArea/ServiceMap.tsx
+src/app/services/[slug]/page.tsx
 
 # If you have an entire folder for the estimator route you want to hide:
 src/app/estimator/

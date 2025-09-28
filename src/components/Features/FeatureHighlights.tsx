@@ -1,34 +1,39 @@
-
-// src/components/Features/FeatureHighlights.tsx
+// src/components/Sections/FeatureHighlights.tsx
 import React from 'react';
 import Heading from '@/components/UI/Typography/Heading';
 import styles from './FeatureHighlights.module.css';
 
-// Feature data
+// Feature data with improved content and a fifth point for better layout
 const FEATURES = [
     {
         icon: '⏱️',
-        title: '24/7 Emergency Service',
-        description: 'HVAC failures don’t follow a schedule. Our certified techs are on-call day and night for rapid, dependable service across the DMV.',
-        color: 'var(--color-danger)',
+        title: '24/7 Rapid Response',
+        description: 'HVAC emergencies don’t wait for business hours. We’re available around the clock for urgent repairs to restore your comfort fast.',
+        color: 'var(--color-danger)', // Red/Accent
     },
     {
         icon: '✅',
-        title: 'Certified & Insured',
-        description: 'Trust your home comfort to the experts. We are fully licensed, insured, and certified for all major HVAC brands and systems.',
-        color: 'var(--color-success)',
+        title: 'NATE-Certified Experts',
+        description: 'Our technicians are highly trained and NATE-certified, guaranteeing expert, reliable workmanship on every job.',
+        color: 'var(--color-success)', // Green/Success
     },
     {
-        icon: '💵',
-        title: 'Upfront, Fair Pricing',
-        description: 'No surprises or hidden fees. We provide clear, honest estimates before any work begins, so you always know the cost.',
-        color: 'var(--color-primary)',
+        icon: '💰',
+        title: 'Guaranteed Upfront Pricing',
+        description: 'Always know the cost before we start. We believe in total transparency—you approve the price, we fix the problem.',
+        color: 'var(--color-accent)', // Yellow/Secondary
     },
     {
-        icon: '🥇',
-        title: 'Local Hero Guarantee',
-        description: 'We stand by our work. All repairs and installations are backed by our comprehensive service guarantee for your peace of mind.',
-        color: 'var(--color-secondary-dark)',
+        icon: '🛡️', // Changed icon for guarantee
+        title: 'Local Hero Warranty',
+        description: 'All services are backed by a comprehensive warranty on parts and labor. We stand behind our repairs and installations.',
+        color: 'var(--color-primary-dark)', // Primary Dark
+    },
+    {
+        icon: '⭐', // Added a fifth point for better layout
+        title: 'Trusted Local Service',
+        description: 'Proudly serving the DMV region for over 15 years. We know the unique climate and housing needs of our community.',
+        color: 'var(--color-secondary)', // Secondary
     },
 ];
 
@@ -40,7 +45,7 @@ const FeatureHighlights: React.FC = () => {
                     Why Choose HVAC Hero?
                 </Heading>
                 <p className={styles.sectionSubtitle}>
-                    Reliable service starts with integrity, speed, and expertise.
+                    Reliability and expertise, guaranteed. Your comfort is our mission.
                 </p>
 
                 <div className={styles.featuresGrid}>
@@ -48,7 +53,7 @@ const FeatureHighlights: React.FC = () => {
                         <div key={index} className={styles.featureCard}>
                             <div 
                                 className={styles.iconCircle} 
-                                style={{backgroundColor: feature.color}}
+                                style={{ backgroundColor: feature.color, color: 'white' }} // White icon color against colored background
                             >
                                 {feature.icon}
                             </div>
