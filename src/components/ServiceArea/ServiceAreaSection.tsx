@@ -1,32 +1,31 @@
 // src/components/ServiceArea/ServiceAreaSection.tsx
 import React from 'react';
 import Heading from '@/components/UI/Typography/Heading';
-import styles from './ServiceAreaSection.module.css'; // Assume you'll create CSS modules for layout
+import styles from './ServiceAreaSection.module.css'; 
 import Link from 'next/link';
 import Button from '@/components/UI/Button/Button';
 
+// Data for the service table
+const SERVICE_AREAS = [
+  { 
+    region: 'Washington D.C. 🏛️', 
+    cities: 'Georgetown, Capitol Hill, Foggy Bottom, Navy Yard, Dupont Circle, Columbia Heights, and all quadrants of the District.' 
+  },
+  { 
+    region: 'Montgomery County, MD 🏡', 
+    cities: 'Rockville, Bethesda, Gaithersburg, Silver Spring, Germantown, Potomac, Olney, Wheaton, Chevy Chase, and Kensington.' 
+  },
+  { 
+    region: "Prince George's County, MD 🌳", 
+    cities: 'Bowie, Upper Marlboro, Laurel, College Park, Greenbelt, Hyattsville, Landover, Mitchellville, and Clinton.' 
+  },
+  { 
+    region: 'Northern Virginia (NOVA) 🛣️', 
+    cities: 'Arlington, Alexandria, Fairfax, Tysons, Reston, McLean, Centreville, Falls Church, and parts of Loudoun County.' 
+  },
+];
 
 const ServiceAreaSection: React.FC = () => {
-  // Data for the service table
-  const serviceAreas = [
-    { 
-      region: 'Washington D.C. 🏛️', 
-      cities: 'Georgetown, Capitol Hill, Foggy Bottom, Navy Yard, Dupont Circle, Columbia Heights, and all quadrants of the District.' 
-    },
-    { 
-      region: 'Montgomery County, MD 🏡', 
-      cities: 'Rockville, Bethesda, Gaithersburg, Silver Spring, Germantown, Potomac, Olney, Wheaton, Chevy Chase, and Kensington.' 
-    },
-    { 
-      region: "Prince George's County, MD 🌳", 
-      cities: 'Bowie, Upper Marlboro, Laurel, College Park, Greenbelt, Hyattsville, Landover, Mitchellville, and Clinton.' 
-    },
-    { 
-      region: 'Northern Virginia (NOVA) 🛣️', 
-      cities: 'Arlington, Alexandria, Fairfax, Tysons, Reston, McLean, Centreville, Falls Church, and parts of Loudoun County.' 
-    },
-  ];
-
   return (
     <section className={`${styles.serviceArea} section-padding bg-light`}>
       <div className="container text-center">
@@ -55,7 +54,7 @@ const ServiceAreaSection: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {serviceAreas.map((area, index) => (
+              {SERVICE_AREAS.map((area, index) => (
                 <tr key={index}>
                   <td data-label="County/Region">{area.region}</td>
                   <td data-label="Key Cities">{area.cities}</td>

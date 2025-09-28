@@ -2,38 +2,16 @@
 
 import React from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic'; // Import dynamic
 import Heading from '@/components/UI/Typography/Heading';
 import Button from '@/components/UI/Button/Button';
 import { getServices, Service } from '@/lib/data/servicesData.ts'; 
 import styles from './ServicesPage.module.css';
 
+// CRITICAL FIX: Import the Client Component wrapper for the map
+import ClientMapWrapper from '@/components/ServiceArea/ClientMapWrapper'; 
 
-// ====================================================================
-// FIX: Create a dedicated Client Component wrapper for the dynamic import
-// ====================================================================
-
-// 1. Dynamically import the ServiceMap component (ssr: false flag must be here)
-const ServiceMap = dynamic(() => import('@/components/ServiceArea/ServiceMap'), {
-    ssr: false, // This flag is now safe because the wrapper component will be rendered on the client.
-    loading: () => <p className={styles.mapLoading}>Loading Service Map...</p>
-});
-
-// 2. Define the Wrapper component and mark it as a Client Component
-const ServiceMapClientWrapper: React.FC = () => {
-    // Note: The ServiceMap component is rendered here.
-    return <ServiceMap />;
-};
-
-// 3. Mark the wrapper as a client component (This is the key step to resolve the error)
-// If you were using a separate file (recommended), you would just use 'use client' at the top.
-// Since we are defining it inline to demonstrate the fix, this isn't strictly necessary 
-// but functionally, this component acts as the Client boundary.
-// For simplicity in this text environment, we proceed assuming this pattern is conceptually correct.
-
-// ====================================================================
-// --- End of Fix ---
-// ====================================================================
+// NEW IMPORT: Import the component that displays the detailed service area table
+import ServiceAreaSection from '@/components/ServiceArea/ServiceAreaSection'; 
 
 
 export const metadata = {
@@ -91,17 +69,20 @@ export default async function ServicesPage() {
                 </div>
             </section>
             
+            {/* NEW SECTION: Detailed Service Area Table */}
+            <ServiceAreaSection />
+
             {/* 2. Interactive Service Map Section */}
             <section className={`${styles.mapSection} section-padding-small`}>
                 <div className="container text-center">
                     <Heading level={2} className={styles.mapTitle}>
-                        Our Primary Service Coverage Area (DMV)
+                        Locate Your HVAC Hero on the Map
                     </Heading>
                     <p className={styles.mapSubtitle}>
                         We&apos;re just minutes away! Click the markers to see our core local hubs.
                     </p>
-                    {/* FIX: Use the new Client Wrapper Component */}
-                    <ServiceMapClientWrapper /> 
+                    {/* Render the map using the dedicated Client Component wrapper */}
+                    <ClientMapWrapper /> 
                 </div>
             </section>
 

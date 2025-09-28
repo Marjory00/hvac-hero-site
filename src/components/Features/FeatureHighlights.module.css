@@ -1,0 +1,76 @@
+
+/* src/components/Features/FeatureHighlights.module.css */
+
+.highlightsSection {
+    background-color: var(--color-off-white, #f9f9f9); /* Use a light, contrasting background */
+    padding: 5rem 0;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    color: var(--color-primary-dark, #0056b3);
+    margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-light, #6b7280);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.featureCard {
+    background: var(--color-white, #ffffff);
+    padding: 2rem;
+    border-radius: var(--border-radius, 10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border-top: 5px solid var(--color-primary, #007bff); /* Subtle feature border */
+}
+
+.featureCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.iconCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    /* The background color is set dynamically via the inline style */
+}
+
+.cardTitle {
+    font-size: 1.35rem;
+    color: var(--color-heading, #1f2937);
+    margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+    color: var(--color-text-dark, #333);
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .highlightsSection {
+        padding: 3rem 0;
+    }
+    .sectionTitle {
+        font-size: 2rem;
+    }
+}
