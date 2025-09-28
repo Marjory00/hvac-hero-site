@@ -2,14 +2,38 @@
 import React from 'react';
 import Heading from '@/components/UI/Typography/Heading';
 import styles from './ServiceAreaSection.module.css'; // Assume you'll create CSS modules for layout
+import Link from 'next/link';
+import Button from '@/components/UI/Button/Button';
+
 
 const ServiceAreaSection: React.FC = () => {
+  // Data for the service table
+  const serviceAreas = [
+    { 
+      region: 'Washington D.C. 🏛️', 
+      cities: 'Georgetown, Capitol Hill, Foggy Bottom, Navy Yard, Dupont Circle, Columbia Heights, and all quadrants of the District.' 
+    },
+    { 
+      region: 'Montgomery County, MD 🏡', 
+      cities: 'Rockville, Bethesda, Gaithersburg, Silver Spring, Germantown, Potomac, Olney, Wheaton, Chevy Chase, and Kensington.' 
+    },
+    { 
+      region: "Prince George's County, MD 🌳", 
+      cities: 'Bowie, Upper Marlboro, Laurel, College Park, Greenbelt, Hyattsville, Landover, Mitchellville, and Clinton.' 
+    },
+    { 
+      region: 'Northern Virginia (NOVA) 🛣️', 
+      cities: 'Arlington, Alexandria, Fairfax, Tysons, Reston, McLean, Centreville, Falls Church, and parts of Loudoun County.' 
+    },
+  ];
+
   return (
-    <section className={`${styles.serviceArea} section-padding`}>
+    <section className={`${styles.serviceArea} section-padding bg-light`}>
       <div className="container text-center">
         <Heading level={2} className={styles.mainTitle}>
           Proudly Serving Your Local Community 🛠️
         </Heading>
+        
         <p className={styles.introText}>
           HVAC Hero provides certified, rapid-response heating and cooling services across the entire **DMV region** (District of Columbia, Maryland, and Virginia). When you need dependable service, we&apos;re just minutes away.
         </p>
@@ -31,34 +55,31 @@ const ServiceAreaSection: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td data-label="County/Region">Washington D.C. 🏛️</td>
-                <td data-label="Key Cities">**Georgetown**, **Capitol Hill**, Northwest D.C., Navy Yard, Foggy Bottom, and all other quadrants of the District.</td>
-              </tr>
-              <tr>
-                <td data-label="County/Region">Montgomery County, MD 🏡</td>
-                <td data-label="Key Cities">**Rockville**, **Bethesda**, **Gaithersburg**, Silver Spring, Germantown, Potomac, Olney, and surrounding areas.</td>
-              </tr>
-              <tr>
-                <td data-label="County/Region">Prince George&apos;s County, MD 🌳</td>
-                <td data-label="Key Cities">**Bowie**, **Upper Marlboro**, Laurel, College Park, Greenbelt, Landover, and surrounding communities.</td>
-              </tr>
-              <tr>
-                <td data-label="County/Region">Northern Virginia (NOVA) 🛣️</td>
-                <td data-label="Key Cities">**Arlington**, **Alexandria**, Fairfax, Tysons, Reston, McLean, and parts of Loudoun County.</td>
-              </tr>
+              {serviceAreas.map((area, index) => (
+                <tr key={index}>
+                  <td data-label="County/Region">{area.region}</td>
+                  <td data-label="Key Cities">{area.cities}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
         <div className={styles.footerCta}>
-          <Heading level={4}>Why Choose a Local Hero?</Heading>
+          <Heading level={4} className={styles.ctaHeading}>Why Choose a Local Hero?</Heading>
           <p>
-            Choosing a local provider means faster response times for emergency repairs and technicians who are familiar with the specific HVAC needs of historic D.C. homes, sprawling Montgomery County residences, and modern NOVA developments.
+            Choosing a local provider means faster response times for emergency repairs and technicians who are familiar with 
+            the specific HVAC needs of historic D.C. homes, sprawling Montgomery County residences, and modern NOVA developments.
           </p>
-          <p>
-            **Don&apos;t see your specific town listed?** If you are located in the greater D.C., Maryland, or Northern Virginia metropolitan area, **call us today!** We frequently extend our service radius to ensure your home comfort needs are met.
+          
+          <p className={styles.finalCtaText}>
+            **Don&apos;t see your specific town listed?** If you are located in the greater D.C., Maryland, or Northern Virginia 
+            metropolitan area, **call us today!** We frequently extend our service radius to ensure your home comfort needs are met.
           </p>
+
+          <Link href="/contact" className={styles.contactButton}>
+            <Button variant="primary">Schedule Service or Get a Quote</Button>
+          </Link>
         </div>
       </div>
     </section>

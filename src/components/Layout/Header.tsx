@@ -7,9 +7,10 @@ import headerStyles from './Header.module.css';
 
 const Header: React.FC = () => {
   const navLinks = [
+    // FIX: ADDED 'Home' link at the start of the navigation array
+    { name: 'Home', href: '/' }, 
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
-    // 💡 ADDED: Link to the new estimator page
     { name: 'Estimator', href: '/estimator' }, 
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' }, 
@@ -19,7 +20,7 @@ const Header: React.FC = () => {
     <header className={headerStyles.header}>
       <div className={`${headerStyles.container} container`}>
         
-        {/* Logo/Brand */}
+        {/* Logo/Brand (This is already correctly linked to '/') */}
         <Link href="/" className={headerStyles.brand}>
           HVAC Hero
         </Link>
@@ -27,6 +28,8 @@ const Header: React.FC = () => {
         {/* Navigation Links */}
         <nav className={headerStyles.nav}>
           <ul className={headerStyles.navList}>
+            {/* FIX: The map now correctly includes the 'Home' link, 
+                    ensuring it appears first in the navbar. */}
             {navLinks.map((link) => (
               <li key={link.name} className={headerStyles.navItem}>
                 <Link href={link.href} className={headerStyles.navLink}>
@@ -39,7 +42,6 @@ const Header: React.FC = () => {
 
         {/* Primary CTA Button */}
         <div className={headerStyles.cta}>
-          {/* Link component remains correctly structured after previous fixes */}
           <Link href="/contact" className={headerStyles.linkButton}>
             <Button variant="primary">
               Get Quote
