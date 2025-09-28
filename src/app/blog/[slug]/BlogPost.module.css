@@ -1,0 +1,83 @@
+
+/* src/app/blog/[slug]/BlogPost.module.css */
+
+.postContainer {
+    padding: 3rem 0;
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.title {
+    font-size: 3rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.meta {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.featuredImage {
+    width: 100%;
+    height: 400px; /* Standard height for a featured image */
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin-bottom: 3rem;
+}
+
+.content {
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.content p {
+    margin-bottom: 1.5rem;
+}
+
+.content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 20px;
+}
+
+.ctaBox {
+    margin-top: 4rem;
+    padding: 2rem;
+    background-color: var(--color-secondary-light);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.ctaBox p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    .featuredImage {
+        height: 250px;
+    }
+    .content {
+        font-size: 1rem;
+    }
+}
