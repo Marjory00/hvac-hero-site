@@ -1,0 +1,115 @@
+/* src/app/services/ServicesPage.module.css */
+
+.main {
+    /* Inherits padding and background from global utilities */
+}
+
+.pageTitle {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    color: var(--color-navy);
+}
+
+.introText {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3xl);
+    font-size: 1.1rem;
+}
+
+/* Card Styles (Reusing .service-grid global class for layout) */
+.serviceCard {
+    background-color: var(--color-background);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.serviceCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    color: var(--color-sky-blue);
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+}
+
+.summary {
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+    flex-grow: 1;
+}
+
+.detailList {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: var(--space-lg);
+    font-size: 0.95rem;
+}
+
+.detailList li {
+    padding: var(--space-xs) 0;
+    color: var(--color-text-secondary);
+}
+
+.detailList li::before {
+    content: "✔️";
+    color: var(--color-green);
+    font-size: 0.8rem;
+    display: inline-block;
+    width: 1.5em;
+    margin-left: -1.5em;
+}
+
+.cardButton {
+    margin-top: auto; /* Pushes button to the bottom */
+}
+
+/* CTA Bar */
+.ctaBar {
+    background-color: var(--color-navy);
+    color: var(--color-white);
+    padding: var(--space-xl) var(--space-md);
+    border-radius: var(--radius-lg);
+    margin-top: var(--space-3xl);
+}
+
+.ctaBar h2, .ctaBar p {
+    color: var(--color-white);
+    margin-top: 0;
+}
+
+.ctaBar p {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-lg);
+}
+
+.ctaButtons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+/* FIX: New CSS class to create the white outline effect on the secondary button */
+.outlineCtaButton {
+    /* Override secondary button's background/color */
+    background-color: transparent !important; 
+    border: 2px solid var(--color-white) !important; 
+    color: var(--color-white) !important;
+}
+
+.outlineCtaButton:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}

@@ -6,6 +6,8 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    // other options...
+    "allowImportingTsExtensions": true,
     "strict": true,
     "noEmit": true,
     "module": "esnext",
@@ -24,12 +26,12 @@
       "@/*": ["./src/*"], 
       "@/lib/*": ["./src/lib/*"],
       
-      // ✅ FIX: This path alias is now correctly nested inside the "paths" object
+      //FIX: This path alias is now correctly nested inside the "paths" object
       "@/logic/pricing": [
         "src/lib/private/pricing_engine.ts",
         "src/lib/private_stubs/pricing_engine.ts" 
       ],
-        // ✅ NEW ALIAS: Validation Logic
+        // NEW ALIAS: Validation Logic
       "@/logic/validation": [
         "src/lib/private/complex_validation.ts",
         "src/lib/private_stubs/complex_validation.ts"
@@ -37,7 +39,7 @@
     }
   },
   
-  // ✅ FIX: The "include" and "exclude" arrays are now correctly placed outside the "compilerOptions" block
+  // FIX: The "include" and "exclude" arrays are now correctly placed outside the "compilerOptions" block
   "include": [
     "next-env.d.ts", 
     "**/*.ts", 

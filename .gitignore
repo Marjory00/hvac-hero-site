@@ -65,3 +65,9 @@ out/
 # --- HIDE PROPRIETARY BUSINESS LOGIC FOR PORTFOLIO ---
 # Ensure your actual proprietary code is NEVER pushed
 /src/lib/private/
+
+# Hide the main estimator page file
+src/app/estimator/page.tsx
+
+# If you have an entire folder for the estimator route you want to hide:
+src/app/estimator/
