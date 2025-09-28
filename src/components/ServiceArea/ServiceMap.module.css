@@ -1,0 +1,41 @@
+
+/* src/components/ServiceArea/ServiceMap.module.css */
+
+.mapContainer {
+    /* Ensures the map is visually contained and centered */
+    max-width: 1200px;
+    margin: 2rem auto;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-large);
+}
+
+.map {
+    /* Critical: Maps must have a defined height */
+    height: 500px; 
+    width: 100%;
+    z-index: 1; /* Keep map layer below modals/menus */
+}
+
+/* Custom styles for the popup window content */
+.popupContent {
+    font-family: inherit;
+    text-align: center;
+}
+
+.popupContent p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.popupContent strong {
+    color: var(--color-primary);
+}
+
+.popupContent a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    font-weight: 600;
+    display: block;
+    margin-top: 0.5rem;
+}

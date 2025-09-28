@@ -1,82 +1,26 @@
-/* src/components/ServiceArea/ServiceAreaSection.module.css */
+/* src/app/services/ServicesPage.module.css (Add these styles) */
 
-.serviceArea {
-    background-color: var(--color-light-gray); /* Example background */
+/* --- Map Section Styles --- */
+.mapSection {
+    background-color: var(--color-white); /* Use a neutral color for contrast */
 }
 
-.mainTitle {
+.mapTitle {
+    color: var(--color-primary-dark);
     margin-bottom: 0.5rem;
 }
 
-.introText {
-    font-size: 1.15rem;
-    margin-bottom: 2rem;
+.mapSubtitle {
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
 }
 
-.subTitle {
-    color: var(--color-primary);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+.mapLoading {
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--color-accent);
 }
 
-.tableWrapper {
-    overflow-x: auto;
-    width: 100%;
-    margin: 2rem 0;
-}
-
-.serviceTable {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    min-width: 600px; /* Ensures columns are wide enough */
-}
-
-.serviceTable th,
-.serviceTable td {
-    padding: 1rem;
-    border: 1px solid var(--color-border);
-}
-
-.serviceTable th {
-    background-color: var(--color-primary-light);
-    color: var(--color-primary-dark);
-    font-weight: 700;
-}
-
-/* Responsive Table Styling (Makes table stack on small screens) */
-@media (max-width: 650px) {
-    .serviceTable {
-        border: 0;
-        min-width: 100%;
-    }
-
-    .serviceTable thead {
-        display: none;
-    }
-
-    .serviceTable tr {
-        display: block;
-        margin-bottom: 1rem;
-        border: 1px solid var(--color-border);
-    }
-
-    .serviceTable td {
-        display: block;
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-        border: none;
-    }
-
-    .serviceTable td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 10px;
-        width: calc(50% - 20px);
-        padding-right: 10px;
-        white-space: nowrap;
-        font-weight: 700;
-        text-align: left;
-    }
-}
+/* Ensure existing styles for ctaBar and serviceGrid are still present */
