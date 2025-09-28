@@ -1,31 +1,106 @@
 /* src/components/UI/Button/Button.module.css */
 
 .button {
-  padding: var(--space-md) var(--space-lg);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s, transform 0.1s;
+    padding: var(--space-md) var(--space-lg);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, transform 0.1s, border-color 0.2s; /* Added border-color */
+    text-decoration: none; /* Important for when the button is rendered as an <a> tag */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* --- 1. Primary Variant (Main CTA) --- */
 .primary {
-  background-color: var(--color-sky-blue);
-  color: white;
+    background-color: var(--color-sky-blue);
+    color: white;
+    border: 2px solid var(--color-sky-blue);
 }
 
 .primary:hover {
-  background-color: var(--color-navy);
+    background-color: var(--color-navy);
+    border-color: var(--color-navy);
+    transform: translateY(-1px);
 }
 
+/* --- 2. Secondary Variant (Outline/Light CTA) --- */
 .secondary {
-  background-color: white;
-  color: var(--color-sky-blue);
-  border: 2px solid var(--color-sky-blue);
+    background-color: white;
+    color: var(--color-sky-blue);
+    border: 2px solid var(--color-sky-blue);
 }
 
 .secondary:hover {
-  background-color: var(--color-sky-blue);
-  color: white;
+    background-color: var(--color-sky-blue);
+    color: white;
+    transform: translateY(-1px);
 }
-/* Add .ghost variant styles as well */
+
+/* --- 3. Ghost Variant (Text-only CTA) --- */
+.ghost {
+    background-color: transparent;
+    color: var(--color-text-dark, #333);
+    border: 2px solid transparent; /* Keeps padding consistent */
+}
+
+.ghost:hover {
+    background-color: var(--color-off-white, #f0f0f0);
+    color: var(--color-sky-blue);
+}
+
+/* --- 4. Accent Variant (High-Impact/Emergency CTA) --- */
+.accent {
+    background-color: var(--color-accent, #ffc107); /* Bright accent color */
+    color: var(--color-primary-dark, #0056b3); /* Dark text for high contrast */
+    border: 2px solid var(--color-accent, #ffc107);
+    font-weight: 700;
+}
+
+.accent:hover {
+    background-color: var(--color-accent-dark, #e0a800);
+    border-color: var(--color-accent-dark, #e0a800);
+    transform: translateY(-1px);
+}
+
+/* --- 5. White Variant (For use on dark/colored backgrounds) --- */
+.white {
+    background-color: var(--color-white, #ffffff);
+    color: var(--color-primary, #007bff); 
+    border: 2px solid var(--color-white, #ffffff);
+    font-weight: 600;
+}
+
+.white:hover {
+    background-color: transparent;
+    color: var(--color-white, #ffffff); /* Text turns white */
+    transform: translateY(-1px);
+}
+
+/* src/components/UI/Button/Button.module.css (Add these size classes) */
+
+/* --- Default size (Medium) --- */
+.medium {
+    /* Use your existing button padding values for the medium size */
+    padding: var(--space-md) var(--space-lg); 
+    font-size: 1rem;
+}
+
+/* --- Small Size --- */
+.small {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.85rem;
+}
+
+/* --- Large Size (For primary/emergency CTAs) --- */
+.large {
+    padding: var(--space-lg) var(--space-xl);
+    font-size: 1.15rem;
+}
+
+/* NOTE: You should ensure your existing .button style is clean 
+  and remove the padding property if it's currently defined there, 
+  so that the new size classes control padding completely. 
+*/

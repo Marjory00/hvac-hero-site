@@ -2,28 +2,23 @@
 import React, { ElementType, ComponentPropsWithoutRef, ReactNode } from 'react';
 import styles from './Button.module.css';
 
+// --- NEW: Define Size Types ---
+type ButtonSize = 'small' | 'medium' | 'large';
+
 // --- 1. Define Base Props ---
-// These are the props specific to the Button component's logic (variant).
 interface ButtonOwnProps {
   children: ReactNode;
-  variant: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'accent' | 'white'; // Made variant optional
+  size?: ButtonSize; 
   className?: string;
-  // Note: type is inherited from ComponentPropsWithoutRef<'button'>
 }
 
-// --- 2. Define Polymorphic Types (The Fix) ---
-
-// A utility type that combines the base props (P) with standard HTML props 
-// based on the dynamic element type (T), and includes the optional 'as' prop.
+// --- 2. Define Polymorphic Types ---
 type PolymorphicComponentProps<T extends ElementType, P> = 
   P & { as?: T } & ComponentPropsWithoutRef<T>;
 
-// Define the main prop type, defaulting to 'button' element type.
-// This allows ButtonProps<'a'> to inherit anchor props (like href).
 type ButtonProps<T extends ElementType = 'button'> = PolymorphicComponentProps<T, ButtonOwnProps>;
 
-
-// Define the functional component type for full TypeScript accuracy.
 type ButtonComponent = <T extends ElementType = 'button'>(
   props: ButtonProps<T>
 ) => React.ReactElement | null;
@@ -32,18 +27,21 @@ type ButtonComponent = <T extends ElementType = 'button'>(
 // --- 3. Refactor the Component Logic ---
 const Button: ButtonComponent = ({ 
   children, 
-  variant, 
+  // FIX: Set a default value for variant during destructuring.
+  variant = 'primary', 
+  size = 'medium', 
   className, 
-  as: Tag = 'button', // Destructure 'as' and rename it to 'Tag', defaulting to 'button'
+  as: Tag = 'button',
   ...rest 
 }) => {
-  const allClassNames = `${styles.button} ${styles[variant]} ${className || ''}`;
+  // FIX: Since variant has a default, it will never be an empty string here.
+  const sizeClass = size ? styles[size] : '';
+  const allClassNames = `${styles.button} ${styles[variant]} ${sizeClass} ${className || ''}`;
   
-  // The Tag variable will be the element type ('button' or 'a')
   return (
     <Tag 
       className={allClassNames}
-      {...rest} // Spreads all HTML props (href, onClick, disabled, etc.)
+      {...rest} 
     >
       {children}
     </Tag>
