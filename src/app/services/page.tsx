@@ -3,8 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 import Heading from '@/components/UI/Typography/Heading';
 import Button from '@/components/UI/Button/Button';
-// FIX: Explicitly adding the '.ts' extension to resolve module and type declaration errors.
-import { getServiceBySlug, getServices, Service } from '@/lib/data/servicesData';
+// Final fix for module resolution and type declarations.
+import { getServices, Service } from '@/lib/data/servicesData.ts'; 
 import styles from './ServicesPage.module.css';
 
 export const metadata = {
@@ -12,7 +12,12 @@ export const metadata = {
   description: 'HVAC Hero offers comprehensive services including installation, 24/7 repairs, and preventative maintenance plans for all heating and cooling systems.',
 };
 
-const ServiceCard: React.FC<{ service: Service }> = ({ service }) => (
+// FIX: Explicit interface uses the imported Service type (resolves unused variable warning)
+interface ServiceCardProps {
+    service: Service;
+}
+
+const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => (
   <div className={styles.serviceCard}>
     <div className={styles.icon}>{service.icon}</div>
     <Heading level={3} className={styles.cardTitle}>{service.title}</Heading>
@@ -25,6 +30,7 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => (
     </ul>
     
     <Link href={`/services/${service.slug}`}>
+      {/* Removed the size prop to fix TypeScript error */}
       <Button variant="secondary" className={styles.cardButton}>
         View Details & Solutions
       </Button>
@@ -58,16 +64,17 @@ export default async function ServicesPage() {
         <Heading level={2}>Ready to Upgrade or Need Immediate Help?</Heading>
         <p>Use our estimator for a quick cost calculation or call us now for 24/7 emergency service.</p>
         <div className={styles.ctaButtons}>
-          <Link href="/estimator">
-            <Button variant="primary">Use Cost Estimator</Button>
-          </Link>
-          <Link href="/contact">
-            <Button variant="secondary" className={styles.outlineCtaButton}>
-              Call for Emergency Service
-            </Button>
-          </Link>
+            <Link href="/estimator">
+                <Button variant="primary">Use Cost Estimator</Button>
+            </Link>
+            <Link href="/contact">
+                <Button variant="secondary" className={styles.outlineCtaButton}>
+                    Call for Emergency Service
+                </Button>
+            </Link>
         </div>
       </section>
+
     </main>
   );
 }

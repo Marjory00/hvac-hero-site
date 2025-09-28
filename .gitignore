@@ -68,6 +68,9 @@ out/
 
 # Hide the main estimator page file
 src/app/estimator/page.tsx
+src/app/EstimatorPage.module.css
+src/app/about/page.tsx
+src/app/services/page.tsx
 
 # If you have an entire folder for the estimator route you want to hide:
 src/app/estimator/

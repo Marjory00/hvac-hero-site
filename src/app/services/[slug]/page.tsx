@@ -1,24 +1,29 @@
 // src/app/services/[slug]/page.tsx (Server Component)
 import React from 'react';
-// FIX: Using relative path AND explicitly adding the .ts extension.
-import { getServiceBySlug, getServices, Service } from '@/lib/data/servicesData';
+// Final fix for module resolution and type declarations.
+import { getServiceBySlug, getServices, Service } from '@/lib/data/servicesData.ts';
 import Heading from '@/components/UI/Typography/Heading';
 import Button from '@/components/UI/Button/Button';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import styles from './ServiceDetail.module.css';
 
+// FIX: Define a dedicated props interface using the imported 'Service' type
+interface ServicePageProps {
+  params: { slug: string };
+}
+
 // 1. Static Paths Generation (for build time optimization)
 export async function generateStaticParams() {
-  const services = await getServices(); // Ensure this is awaited if it's an async function
+  const services = await getServices(); 
   return services.map(service => ({
     slug: service.slug,
   }));
 }
 
 // 2. Dynamic Metadata Generation for SEO
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const service = await getServiceBySlug(params.slug); // Await the service retrieval
+export async function generateMetadata({ params }: ServicePageProps) {
+  const service = await getServiceBySlug(params.slug); 
   if (!service) {
     return { title: 'Service Not Found | HVAC Hero' };
   }
@@ -30,8 +35,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 // 3. Main Page Component
-export default async function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const service = await getServiceBySlug(params.slug); // Await the service retrieval
+export default async function ServiceDetailPage({ params }: ServicePageProps) {
+  const service = await getServiceBySlug(params.slug);
 
   if (!service) {
     notFound(); 

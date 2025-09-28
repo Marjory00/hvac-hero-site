@@ -1,0 +1,118 @@
+/* Styling for the Service Detail Page */
+
+.main {
+    padding-top: 0;
+}
+
+/* --- Hero Section Styles --- */
+.hero {
+    background-color: var(--color-primary-light);
+    color: var(--color-text-dark);
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+
+.icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+}
+
+.summary {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.15rem;
+}
+
+.cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.secondaryCtaButton {
+    /* Optional: Add custom styling to distinguish from primary CTA */
+}
+
+
+/* --- Detail Section Styles (Key Service Details) --- */
+.detailSection {
+    background-color: var(--color-white);
+}
+
+.sectionTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--color-heading);
+}
+
+.detailGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.detailItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--color-off-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-small);
+}
+
+.checkIcon {
+    font-size: 1.25rem;
+    color: var(--color-success);
+    flex-shrink: 0;
+}
+
+
+/* --- Solutions Section Styles --- */
+.solutionsSection {
+    background-color: var(--color-secondary);
+}
+
+.solutionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.solutionCard {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+}
+
+.solutionTitle {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- Back CTA Section --- */
+.backCta {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+/* Ensure the button doesn't stretch */
+.backCta a {
+    display: inline-block;
+}
+
+/* Variables assumption: 
+--color-primary, --color-secondary, etc.
+--border-radius
+--shadow-small/medium
+*/

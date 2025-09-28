@@ -11,7 +11,7 @@ export interface Service {
   solutions: { name: string; description: string }[]; 
 }
 
-// 2. Mock Data Array
+// 2. Mock Data Array (Example Data)
 export const mockServices: Service[] = [
   {
     id: 1,
@@ -27,7 +27,7 @@ export const mockServices: Service[] = [
     ],
     solutions: [
       { name: 'Emergency Fixes', description: 'Fast, reliable repairs for total system breakdowns.' },
-      { name: 'Seasonal Tune-Up', description: 'Preventative maintenance to boost efficiency and prevent future issues.' },
+      { name: 'Seasonal Tune-Up', description: 'Preventative maintenance to boost efficiency and prevent future issues.' }
     ],
   },
   {
@@ -44,22 +44,22 @@ export const mockServices: Service[] = [
     ],
     solutions: [
       { name: 'Furnace Replacement', description: 'Upgrading old gas or electric furnaces to modern, efficient units.' },
-      { name: 'Heat Pump Systems', description: 'Installing all-in-one heating and cooling heat pump solutions.' },
+      { name: 'Heat Pump Systems', description: 'Installing all-in-one heating and cooling heat pump solutions.' }
     ],
   },
-  // Add more services as needed...
+  // Add more services here...
 ];
 
 // 3. Data Fetching Functions
-// FIX: Functions are async to correctly handle the 'await' call in page components.
+// FIX: These are now async functions to match the 'await' usage in page components.
 export async function getServices(): Promise<Service[]> {
-  // Simulate network latency (e.g., fetching from a database)
+  // Simulate network latency
   await new Promise(resolve => setTimeout(resolve, 50)); 
   return mockServices;
 }
 
 export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
-  // Simulate network latency (e.g., fetching from a database)
+  // Simulate network latency
   await new Promise(resolve => setTimeout(resolve, 50)); 
-  return mockServices.find(service => service.slug === slug);
+  return mockServices.find(s => s.slug === slug);
 }
