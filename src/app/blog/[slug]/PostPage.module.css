@@ -1,3 +1,4 @@
+
 /* src/app/blog/[slug]/PostPage.module.css */
 
 .main {
@@ -118,14 +119,14 @@
         font-size: 2rem;
     }
     .imageWrapper {
-        aspect-ratio: 16 / 9; /* More height on mobile */
+        aspect-ratio: 16 / 9; 
     }
     .contentLayout {
         grid-template-columns: 1fr; /* Stack content and sidebar */
         gap: 3rem;
     }
     .sidebar {
-        order: -1; /* Place sidebar (author bio) before content on mobile */
+        order: -1; 
         position: static;
         margin-bottom: 0;
     }

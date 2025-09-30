@@ -1,64 +1,58 @@
-// src/components/Sections/FeatureHighlights.tsx
+// src/components/Features/FeatureHighlights.tsx
 import React from 'react';
 import Heading from '@/components/UI/Typography/Heading';
 import styles from './FeatureHighlights.module.css';
 
-// Feature data with improved content and a fifth point for better layout
-const FEATURES = [
+// Using simple icons (or Font Awesome/lucide-react icons in a real app)
+interface Feature {
+    icon: string; // Placeholder for a real icon component
+    title: string;
+    description: string;
+}
+
+const features: Feature[] = [
     {
-        icon: '⏱️',
-        title: '24/7 Rapid Response',
-        description: 'HVAC emergencies don’t wait for business hours. We’re available around the clock for urgent repairs to restore your comfort fast.',
-        color: 'var(--color-danger)', // Red/Accent
+        icon: '⏱️', // Clock
+        title: '24/7 Emergency Service',
+        description: 'We are available around the clock for urgent repairs. Fast response guaranteed, day or night.',
     },
     {
-        icon: '✅',
-        title: 'NATE-Certified Experts',
-        description: 'Our technicians are highly trained and NATE-certified, guaranteeing expert, reliable workmanship on every job.',
-        color: 'var(--color-success)', // Green/Success
+        icon: '⭐', // Star/Badge
+        title: 'Certified & Licensed Experts',
+        description: 'All our technicians are NATE-certified, insured, and background-checked for your peace of mind.',
     },
     {
-        icon: '💰',
-        title: 'Guaranteed Upfront Pricing',
-        description: 'Always know the cost before we start. We believe in total transparency—you approve the price, we fix the problem.',
-        color: 'var(--color-accent)', // Yellow/Secondary
+        icon: '🛡️', // Shield
+        title: '100% Satisfaction Guarantee',
+        description: 'We stand by our work with industry-leading warranties and a commitment to quality service.',
     },
     {
-        icon: '🛡️', // Changed icon for guarantee
-        title: 'Local Hero Warranty',
-        description: 'All services are backed by a comprehensive warranty on parts and labor. We stand behind our repairs and installations.',
-        color: 'var(--color-primary-dark)', // Primary Dark
-    },
-    {
-        icon: '⭐', // Added a fifth point for better layout
-        title: 'Trusted Local Service',
-        description: 'Proudly serving the DMV region for over 15 years. We know the unique climate and housing needs of our community.',
-        color: 'var(--color-secondary)', // Secondary
+        icon: '🏠', // House
+        title: 'Local to Montgomery County',
+        description: 'As a local, family-owned business, we understand the specific needs of Maryland homes.',
     },
 ];
 
 const FeatureHighlights: React.FC = () => {
+    // COMMENT: This component uses a dark background to make the features stand out.
     return (
         <section className={`${styles.highlightsSection} section-padding`}>
-            <div className="container text-center">
-                <Heading level={2} className={styles.sectionTitle}>
+            <div className="container">
+                <Heading level={2} className={styles.sectionHeading}>
                     Why Choose HVAC Hero?
                 </Heading>
-                <p className={styles.sectionSubtitle}>
-                    Reliability and expertise, guaranteed. Your comfort is our mission.
-                </p>
-
-                <div className={styles.featuresGrid}>
-                    {FEATURES.map((feature, index) => (
+                
+                <div className={styles.grid}>
+                    {/* COMMENT: Map over the features array to create a grid of trust signals */}
+                    {features.map((feature, index) => (
                         <div key={index} className={styles.featureCard}>
-                            <div 
-                                className={styles.iconCircle} 
-                                style={{ backgroundColor: feature.color, color: 'white' }} // White icon color against colored background
-                            >
-                                {feature.icon}
-                            </div>
-                            <Heading level={3} className={styles.cardTitle}>{feature.title}</Heading>
-                            <p className={styles.cardDescription}>{feature.description}</p>
+                            <div className={styles.icon}>{feature.icon}</div>
+                            <Heading level={3} className={styles.featureTitle}>
+                                {feature.title}
+                            </Heading>
+                            <p className={styles.featureDescription}>
+                                {feature.description}
+                            </p>
                         </div>
                     ))}
                 </div>

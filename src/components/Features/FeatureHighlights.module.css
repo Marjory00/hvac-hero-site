@@ -1,92 +1,71 @@
-/* src/components/Sections/FeatureHighlights.module.css */
+/* src/components/Features/FeatureHighlights.module.css */
 
 .highlightsSection {
-    background-color: var(--color-off-white, #f9f9f9); /* Use a light, contrasting background */
+    /* COMMENT: Use a distinct, complementary color to break up the page content */
+    background-color: var(--color-navy, #001f3f);
+    color: var(--color-white, #ffffff);
     padding: 5rem 0;
 }
 
-.sectionTitle {
+.sectionHeading {
     font-size: 2.5rem;
-    color: var(--color-primary-dark, #0056b3);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-.sectionSubtitle {
-    font-size: 1.15rem;
-    color: var(--color-text-light, #6b7280);
+    font-weight: 900;
+    text-align: center;
+    color: var(--color-white);
     margin-bottom: 3rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
 }
 
-.featuresGrid {
+.grid {
+    /* COMMENT: Creates a responsive 4-column grid layout */
     display: grid;
-    /* 5 items: Aim for 3 columns on large screens for a 3-2 layout */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 2.5rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .featureCard {
-    background: var(--color-white, #ffffff);
-    padding: 2.5rem 1.5rem;
-    border-radius: var(--border-radius, 10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    border: 1px solid var(--color-border-light, #f0f0f0);
+    padding: 1.5rem;
+    /* COMMENT: Simple white background for the cards inside the dark section */
+    background-color: rgba(255, 255, 255, 0.05); 
+    border-radius: var(--radius-md, 8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.featureCard:hover {
-    transform: translateY(-8px); /* Lift card on hover */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); 
-}
-
-.iconCircle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 70px;
-    font-size: 2.2rem;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: var(--color-white, white) !important; /* Ensure icons are white */
-}
-
-.cardTitle {
-    font-size: 1.35rem;
-    color: var(--color-heading, #1f2937);
+.icon {
+    font-size: 3rem;
     margin-bottom: 0.75rem;
-    font-weight: 600;
 }
 
-.cardDescription {
-    color: var(--color-text-dark, #333);
-    line-height: 1.5;
+.featureTitle {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-accent-light, #ffd700); /* Highlighted text color */
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.featureDescription {
+    font-size: 1rem;
+    color: var(--color-text-light, #e0e0e0);
+    line-height: 1.4;
 }
 
 /* --- Responsive Adjustments --- */
-@media (max-width: 1200px) {
-    .featuresGrid {
-        /* Switch to 2 columns */
-        grid-template-columns: repeat(2, 1fr);
+@media (max-width: 768px) {
+    .grid {
+        /* COMMENT: Switches to a 2-column layout on smaller screens */
+        grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+    }
+    .sectionHeading {
+        font-size: 2rem;
     }
 }
 
-@media (max-width: 768px) {
-    .highlightsSection {
-        padding: 3rem 0;
-    }
-    .sectionTitle {
-        font-size: 2rem;
-    }
-    .featuresGrid {
-        /* Stack vertically on mobile */
+@media (max-width: 500px) {
+    .grid {
+        /* COMMENT: Switches to a single-column layout on tiny screens */
         grid-template-columns: 1fr;
     }
 }
