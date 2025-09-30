@@ -104,3 +104,8 @@
   and remove the padding property if it's currently defined there, 
   so that the new size classes control padding completely. 
 */
+
+
+.fullWidth {
+    width: 100%;
+}

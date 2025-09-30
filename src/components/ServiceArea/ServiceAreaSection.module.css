@@ -1,175 +1,85 @@
 /* src/components/ServiceArea/ServiceAreaSection.module.css */
-
-.serviceArea {
-    /* Use a clear background for separation */
-    background-color: var(--color-white); 
-    padding: 4rem 0;
+.areaSection {
+    background-color: var(--color-white, #ffffff);
 }
 
-.mainTitle {
-    /* Large, bold heading */
-    color: var(--color-primary-dark, #0056b3);
-    font-size: 2.5rem;
-    margin-bottom: 0.75rem;
-    font-weight: 700;
-}
-
-.introText {
-    /* Professional summary paragraph */
-    font-size: 1.15rem;
-    max-width: 850px;
-    margin: 0 auto 3rem;
-    color: var(--color-text-dark, #333);
-    line-height: 1.6;
-}
-
-.subTitle {
-    /* Secondary heading style */
-    color: var(--color-heading, #1f2937);
-    font-size: 1.75rem;
-    margin-top: 2rem;
+.sectionTitle {
+    color: var(--color-primary-dark);
+    text-align: center;
     margin-bottom: 0.5rem;
-    font-weight: 600;
 }
 
-.subIntroText {
-    /* Descriptive text before the table */
+.sectionSubtitle {
+    text-align: center;
+    color: var(--color-text-medium);
     margin-bottom: 2rem;
-    color: var(--color-text-light, #6b7280);
-    font-style: italic;
+    font-size: 1.1rem;
 }
-
-/* --- Table Styling: Professional and Responsive --- */
 
 .tableWrapper {
-    overflow-x: auto; /* Ensures horizontal scroll on small screens */
-    width: 100%;
-    margin: 2rem auto;
-    border: 1px solid var(--color-border, #e5e7eb);
-    border-radius: var(--border-radius, 8px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft, professional shadow */
+    overflow-x: auto;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.serviceTable {
+.areaTable {
     width: 100%;
-    border-collapse: separate; /* Use 'separate' for better border-radius/shadow handling */
-    border-spacing: 0;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.areaTable thead th {
+    background-color: var(--color-navy-light, #eaf3ff);
+    color: var(--color-navy);
+    padding: 1rem 1.5rem;
     text-align: left;
-    min-width: 700px; /* Ensure table doesn't get too cramped */
-}
-
-.serviceTable th,
-.serviceTable td {
-    padding: 1.25rem 1rem;
-    border-bottom: 1px solid var(--color-border, #e5e7eb);
-}
-
-.serviceTable thead th {
-    /* Header row styling */
-    background-color: var(--color-secondary-light, #f0f7ff);
-    color: var(--color-primary-dark, #0056b3);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.9rem;
 }
 
-.serviceTable tbody tr:last-child td {
-    border-bottom: none; /* Clean up the last row */
+.areaTable tbody td {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-border-light);
+    color: var(--color-text-primary);
 }
 
-.serviceTable tbody tr:hover {
-    background-color: var(--color-off-white, #f9fafb); /* Subtle hover effect */
+.areaTable tbody tr:nth-child(even) {
+    background-color: var(--color-background-light, #f9f9f9);
 }
 
-/* --- Footer CTA & "Why Choose" Block --- */
-
-.footerCta {
-    margin-top: 4rem;
-    padding: 2.5rem;
-    background-color: var(--color-primary-light, #e0f2ff); /* Light branded background */
-    border-radius: var(--border-radius, 8px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
+.etaColumn {
+    font-weight: 700;
+    color: var(--color-danger, #dc3545);
 }
 
-.ctaHeading {
-    color: var(--color-primary-dark, #0056b3);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.footerCta p {
-    max-width: 900px;
-    margin: 0.5rem auto;
-    line-height: 1.5;
-    color: var(--color-text-dark, #333);
-}
-
-.finalCtaText {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    color: var(--color-danger, #dc3545); /* Highlight the "Call Us Today" urgency */
-}
-
-.contactButton {
-    display: inline-block;
-    /* Custom button styling will be handled by the Button component */
-}
-
-/* --- Mobile Responsiveness (Stacking Table) --- */
+/* Mobile responsive table style (optional, but good practice) */
 @media (max-width: 768px) {
-    .serviceArea {
-        padding: 3rem 0;
+    .areaTable thead {
+        display: none; /* Hide header on small screens */
     }
-    
-    .mainTitle {
-        font-size: 2rem;
+    .areaTable, .areaTable tbody, .areaTable tr, .areaTable td {
+        display: block; /* Treat all elements as blocks */
+        width: 100%;
     }
-
-    /* Convert table to stacked cards for mobile */
-    .serviceTable {
-        border: 0;
-        min-width: 100%;
+    .areaTable tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--color-border-light);
+        border-radius: var(--radius-md);
     }
-
-    .serviceTable thead {
-        display: none; /* Hide header row */
-    }
-
-    .serviceTable tr {
-        display: block;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--color-border, #e5e7eb);
-        border-radius: var(--border-radius, 8px);
-        box-shadow: var(--shadow-small, 0 1px 3px rgba(0, 0, 0, 0.1));
-    }
-
-    .serviceTable td {
-        display: block;
+    .areaTable td {
         text-align: right;
         padding-left: 50%;
         position: relative;
-        border-bottom: 1px solid var(--color-border, #eee);
     }
-    
-    .serviceTable tr:last-child td:last-child {
-         border-bottom: none; /* Remove border from the very last cell */
-    }
-
-    .serviceTable td::before {
-        /* Display the column header label */
-        content: attr(data-label);
+    .areaTable td::before {
+        content: attr(data-label); /* Use data-label for the field name */
         position: absolute;
-        left: 1rem;
+        left: 10px;
         width: 45%;
         padding-right: 10px;
         white-space: nowrap;
-        font-weight: 700;
         text-align: left;
-        color: var(--color-primary, #007bff);
-        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--color-navy);
     }
 }

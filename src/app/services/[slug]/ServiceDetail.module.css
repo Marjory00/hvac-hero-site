@@ -1,13 +1,15 @@
 /* Styling for the Service Detail Page */
 
 .main {
+    /* Ensures page starts right after the header without extra margin */
     padding-top: 0;
 }
 
 /* --- Hero Section Styles --- */
 .hero {
-    background-color: var(--color-primary-light);
-    color: var(--color-text-dark);
+    /* Changed color variable names to use standard, defined variables */
+    background-color: var(--color-background-secondary, #e6f7ff); 
+    color: var(--color-text-primary, #333);
     padding: 4rem 0 3rem;
     text-align: center;
 }
@@ -18,66 +20,84 @@
 }
 
 .title {
-    font-size: 2.5rem;
+    font-size: 2.8rem; /* Slightly larger heading */
+    font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--color-primary-dark);
+    color: var(--color-primary-dark, #001f3f);
 }
 
 .summary {
     max-width: 700px;
     margin: 0 auto 2rem;
     font-size: 1.15rem;
+    color: var(--color-text-medium, #555);
 }
 
 .cta {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem; /* Increased gap for better spacing */
     margin-top: 2rem;
 }
 
 .secondaryCtaButton {
-    /* Optional: Add custom styling to distinguish from primary CTA */
+    /* Apply styles that contrast well with the primary button's solid fill */
+    border: 2px solid var(--color-primary, #007bff);
+    background-color: transparent !important; /* Override base Button styling */
+    color: var(--color-primary, #007bff) !important;
 }
-
 
 /* --- Detail Section Styles (Key Service Details) --- */
 .detailSection {
     background-color: var(--color-white);
+    /* Added padding that maps to the global 'section-padding' utility class */
+    padding: 4rem 0; 
 }
 
 .sectionTitle {
     text-align: center;
-    margin-bottom: 2rem;
-    color: var(--color-heading);
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-navy, #001f3f);
 }
 
 .detailGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    /* Use '350px' as a more typical responsive minimum width */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 2rem;
 }
 
 .detailItem {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    padding: 1rem;
-    background-color: var(--color-off-white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-small);
+    padding: 1.5rem; /* Increased padding */
+    background-color: var(--color-background-light, #f8f9fa); /* Standard background variable */
+    border-radius: var(--radius-lg, 12px); /* Use project-defined radius variable */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Standard shadow variable */
+    border-left: 5px solid var(--color-accent, #ffc107); /* A nice accent line */
+}
+
+.detailItem p {
+    color: var(--color-text-primary);
+    line-height: 1.5;
 }
 
 .checkIcon {
-    font-size: 1.25rem;
-    color: var(--color-success);
+    font-size: 1.5rem; /* Larger icon */
+    color: var(--color-success, #28a745);
     flex-shrink: 0;
+    margin-top: 2px;
 }
 
 
 /* --- Solutions Section Styles --- */
 .solutionsSection {
-    background-color: var(--color-secondary);
+    /* Assuming 'section-padding bg-secondary' is applied via component props */
+    padding: 4rem 0;
+    background-color: var(--color-background-secondary, #f4f7f9);
 }
 
 .solutionGrid {
@@ -88,15 +108,24 @@
 
 .solutionCard {
     background-color: var(--color-white);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-medium);
+    padding: 2rem; /* Increased padding */
+    border-radius: var(--radius-lg, 12px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.solutionCard:hover {
+    transform: translateY(-3px);
 }
 
 .solutionTitle {
-    font-size: 1.5rem;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    color: var(--color-primary, #007bff);
+    margin-bottom: 0.75rem;
+}
+
+.solutionCard p {
+    color: var(--color-text-medium);
 }
 
 
@@ -106,13 +135,32 @@
     text-align: center;
 }
 
-/* Ensure the button doesn't stretch */
+/* Ensure the button doesn't stretch and has margin */
 .backCta a {
     display: inline-block;
 }
 
-/* Variables assumption: 
---color-primary, --color-secondary, etc.
---border-radius
---shadow-small/medium
-*/
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    .hero {
+        padding: 3rem 0 2rem;
+    }
+    .cta {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+    /* Makes buttons full width on small screens */
+    .cta a, .cta button {
+        width: 80%; 
+        max-width: 350px;
+    }
+    .detailGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
