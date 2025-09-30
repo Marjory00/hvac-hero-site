@@ -1,0 +1,64 @@
+
+/* src/components/Sections/EstimatorBanner.module.css */
+
+.banner {
+    /* Use a contrasting color (like your primary blue) to stand out */
+    background-color: var(--color-primary, #004c99); 
+    color: white;
+    padding: 3.5rem 0;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    margin-bottom: 1.5rem;
+}
+
+.headline {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.subheadline {
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.ctaButton {
+    /* Inverted button style should use the primary color on a white background, 
+       or in this case, a bright white button on the blue background */
+    background-color: white;
+    color: var(--color-primary-dark, #001f3f);
+    border: none;
+    transition: background-color 0.2s;
+    min-width: 250px;
+    font-weight: 700;
+}
+
+.ctaButton:hover {
+    background-color: var(--color-sky-blue, #5d9cec);
+    color: white;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .banner {
+        padding: 2.5rem 0;
+    }
+    .headline {
+        font-size: 1.75rem;
+    }
+    .subheadline {
+        font-size: 1rem;
+    }
+}

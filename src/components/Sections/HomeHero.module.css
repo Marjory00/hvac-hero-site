@@ -1,17 +1,15 @@
 
-/* src/components/Home/HeroSection.module.css */
+/* src/components/Sections/HomeHero.module.css */
 
 .hero {
-    /* Large padding to give space above and below the content */
+    /* Large padding for generous spacing */
     padding: 10rem 0 8rem;
     
-    /* FIX: Set a solid, non-image background */
     background-color: var(--color-background-secondary, #f8f9fa); 
     
-    /* Ensure height is decent, but content should control the space */
     min-height: 70vh; 
     display: flex;
-    align-items: center; /* Center content vertically */
+    align-items: center; 
 }
 
 .container {
@@ -19,7 +17,7 @@
 }
 
 .content {
-    max-width: 900px; /* Constrain text width for readability */
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -52,7 +50,6 @@
 }
 
 .ctaButton {
-    /* Ensure buttons are styled large and look clickable */
     min-width: 250px; 
 }
 
@@ -60,7 +57,7 @@
 .trustBar {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    flex-wrap: wrap; 
     gap: 1.5rem 2rem;
     padding-top: 1rem;
     border-top: 1px solid var(--color-border-light);
@@ -75,10 +72,6 @@
     display: flex;
     align-items: center;
 }
-.trustItem span {
-    margin-right: 0.5rem;
-}
-
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {
@@ -102,11 +95,11 @@
         font-size: 1.1rem;
     }
     .ctaGroup {
-        flex-direction: column; /* Stack buttons vertically */
+        flex-direction: column; 
         gap: var(--space-md);
     }
     .trustBar {
-        flex-direction: column; /* Stack trust indicators vertically */
+        flex-direction: column; 
         gap: 0.75rem;
     }
     .ctaButton {

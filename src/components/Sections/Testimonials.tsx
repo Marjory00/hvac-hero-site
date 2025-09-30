@@ -1,44 +1,64 @@
 // src/components/Sections/Testimonials.tsx
 import React from 'react';
 import Heading from '@/components/UI/Typography/Heading';
-import { reviews, Review } from '@/lib/data/reviews'; 
-import Card from '@/components/UI/Card/Card';
+import styles from './Testimonials.module.css';
 
-// Helper to render stars (using simple string for now)
-const renderStars = (rating: number) => '⭐'.repeat(rating);
+interface TestimonialData {
+    id: number;
+    quote: string;
+    author: string;
+    source: string;
+}
+
+const testimonialsData: TestimonialData[] = [
+    {
+        id: 1,
+        quote: "Fixed my furnace within two hours on a Sunday! The technician was professional, courteous, and transparent about the cost. Five stars.",
+        author: "Sarah J.",
+        source: "Google Reviews",
+    },
+    {
+        id: 2,
+        quote: "We chose HVAC Hero for our new AC installation. The crew was efficient, cleaned up everything, and the system runs quieter than I could have imagined.",
+        author: "Mark T.",
+        source: "Yelp",
+    },
+    {
+        id: 3,
+        quote: "The annual maintenance plan is a lifesaver. They caught a small leak before it became a huge repair bill. Highly recommend their proactive service!",
+        author: "David R.",
+        source: "Verified Customer",
+    },
+];
+
+const TestimonialCard: React.FC<TestimonialData> = ({ quote, author, source }) => (
+    <div className={styles.card}>
+        <div className={styles.stars}>⭐⭐⭐⭐⭐</div>
+        <p className={styles.quote}>&quot;{quote}&quot;</p>
+        <p className={styles.author}>— {author}</p>
+        <p className={styles.source}>Source: {source}</p>
+    </div>
+);
 
 const Testimonials: React.FC = () => {
-  return (
-    <section style={{ padding: 'var(--space-xl)', backgroundColor: 'var(--color-background-secondary)' }}>
-      <div className="container" style={{ maxWidth: '1200px', margin: 'auto' }}>
-        <Heading level={2} style={{ textAlign: 'center' }}>
-          What Our Clients Say
-        </Heading>
+    return (
+        <section className={`${styles.testimonials} section-padding bg-off-white`}>
+            <div className="container">
+                <Heading level={2} className={styles.sectionHeading}>
+                    Trusted By Your Neighbors
+                </Heading>
+                <p className={styles.sectionSubheading}>
+                    Read what our **1,500+ satisfied customers** in the Montgomery County area have to say about our expert HVAC service.
+                </p>
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-          gap: 'var(--space-lg)',
-          marginTop: 'var(--space-xl)' 
-        }}>
-          {reviews.map((review: Review, index) => (
-            <Card key={index}>
-              <p style={{ fontSize: '1.5rem', marginBottom: 'var(--space-sm)' }}>
-                {renderStars(review.rating)}
-              </p>
-              <p style={{ fontStyle: 'italic', marginBottom: 'var(--space-md)' }}>
-                {/* ✅ FIX: Use &ldquo; and &rdquo; (left and right double quotes) to escape the characters */}
-                &ldquo;{review.comment}&rdquo; 
-              </p>
-              <p style={{ fontWeight: 'bold', borderTop: '1px solid #eee', paddingTop: 'var(--space-sm)' }}>
-                — {review.name}
-              </p>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+                <div className={styles.cardGrid}>
+                    {testimonialsData.map(t => (
+                        <TestimonialCard key={t.id} {...t} />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default Testimonials;

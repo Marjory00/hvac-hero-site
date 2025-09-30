@@ -1,14 +1,17 @@
-
 // src/lib/data/blogData.ts
 import { Metadata } from 'next';
 
 export interface BlogPost {
+  // FIX 1: Changed 'unknown' to 'boolean'
+  isFeatured: boolean;
+  readTime: string;
   slug: string;
   title: string;
   excerpt: string;
   date: string; // YYYY-MM-DD format
   author: string;
-  category: 'Maintenance' | 'Installation' | 'Energy Savings' | 'Tips';
+  // FIX 3: Added missing 'Tips' category
+  category: 'Maintenance' | 'Installation' | 'Energy Savings' | 'Tips'; 
   imageUrl: string;
   content: string; // Full MD/HTML content
 }
@@ -16,6 +19,9 @@ export interface BlogPost {
 // Mock data to simulate fetching posts from a database or headless CMS
 const mockPosts: BlogPost[] = [
   {
+    // FIX 2: Added missing fields
+    isFeatured: true,
+    readTime: '5 min',
     slug: 'seasonal-ac-maintenance-guide',
     title: 'Your Seasonal AC Maintenance Checklist for Peak Efficiency',
     excerpt: 'Simple steps you can take every spring to ensure your air conditioner runs smoothly and avoids costly summer breakdowns.',
@@ -36,6 +42,9 @@ const mockPosts: BlogPost[] = [
     `,
   },
   {
+    // FIX 2: Added missing fields
+    isFeatured: false,
+    readTime: '8 min',
     slug: 'choosing-the-right-furnace',
     title: 'Gas vs. Electric: Choosing the Right Furnace for Your Home',
     excerpt: 'A detailed look at the pros and cons of gas, electric, and oil furnaces to help you make an informed decision for your next installation.',
@@ -51,6 +60,9 @@ const mockPosts: BlogPost[] = [
     `,
   },
   {
+    // FIX 2: Added missing fields
+    isFeatured: false,
+    readTime: '4 min',
     slug: 'heat-pump-savings',
     title: 'Maximize Energy Savings with a High-Efficiency Heat Pump',
     excerpt: 'Heat pumps are dual-function systems that offer cooling and heating. Learn how modern SEER and HSPF ratings translate into real dollars saved on your utility bills.',
@@ -67,8 +79,9 @@ const mockPosts: BlogPost[] = [
 
 export async function getPosts(): Promise<BlogPost[]> {
   // Simulates an asynchronous database/API fetch delay
-  await new Promise(resolve => setTimeout(resolve, 50)); 
-  return mockPosts;
+  await new Promise(resolve => setTimeout(resolve, 50));
+  // Sort by date (newest first) before returning
+  return mockPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {

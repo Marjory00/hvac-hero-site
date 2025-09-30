@@ -1,34 +1,36 @@
-// src/app/page.tsx (Home Page Server Component)
+// src/app/page.tsx
+import React from 'react';
 
-// Ensure this path is correct and matches the file's physical location
-import HeroSection from '@/components/Sections/HeroSection';
-import FeatureHighlights from '@/components/Sections/FeatureHighlights'; // <-- CORRECT IMPORT
-import ServicesOverview from '@/components/Sections/ServicesOverview'; 
-import Testimonials from '@/components/Sections/Testimonials'; 
-import FAQSection from '@/components/Sections/FAQSection';
-import CTAFooterBar from '@/components/Sections/CTAFooterBar';
+// Import all Home page sections (assuming they are all in components/Sections/)
+import HomeHero from '@/components/Sections/HomeHero';
+import ServicesOverview from '@/components/Sections/ServicesOverview';
+import Testimonials from '@/components/Sections/Testimonials';
+import EstimatorBanner from '@/components/Sections/EstimatorBanner';
+import LocalContact from '@/components/Sections/LocalContact';
 
-export default function Home() {
+// Define metadata here if needed
+
+const HomePage: React.FC = () => {
     return (
-        <main className="home-page-layout">
+        <main>
             {/* 1. Hero Section */}
-            <HeroSection />
+            <HomeHero /> 
 
-            {/* 2. Feature Highlights: This is the correct, top-level placement 
-            for immediate trust-building on the home page. */}
-            <FeatureHighlights /> 
-            
-            {/* 3. Core Offerings */}
-            <ServicesOverview /> 
-            
-            {/* 4. Trust/Social Proof */}
-            <Testimonials /> 
-            
-            {/* 5. Authority/Information */}
-            <FAQSection />
+            {/* 2. Services Overview */}
+            <ServicesOverview />
 
-            {/* 6. Final Conversion Point */}
-            <CTAFooterBar /> 
+            {/* 3. Social Proof */}
+            <Testimonials />
+
+            {/* 4. Estimator Promotion Banner */}
+            <EstimatorBanner /> 
+
+            {/* 5. Local SEO & Contact */}
+            <LocalContact />
+            
+            {/* Removed: BlogHighlights component and its import */}
         </main>
     );
-}
+};
+
+export default HomePage;

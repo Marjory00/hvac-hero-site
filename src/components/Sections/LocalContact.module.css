@@ -1,0 +1,105 @@
+
+/* src/components/Sections/LocalContact.module.css */
+
+.localContact {
+    padding: 6rem 0;
+    background-color: var(--color-white, #ffffff);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* Content 3/5, CTA 2/5 */
+    gap: 4rem;
+    align-items: center;
+}
+
+.contentBlock {
+    text-align: left;
+}
+
+.headline {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-navy, #001f3f);
+    margin-bottom: 1.5rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--color-text-medium);
+    margin-bottom: 2rem;
+}
+
+.serviceList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.serviceList li {
+    margin-bottom: 0.75rem;
+}
+
+.serviceList li::before {
+    content: "";
+    margin-right: 0.5rem;
+}
+
+
+/* --- CTA Block Styles --- */
+.ctaBlock {
+    background-color: var(--color-background-secondary, #f8f9fa);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg, 10px);
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.ctaHeadline {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary, #004c99);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.phoneNumber {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--color-accent, #dc3545);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: color 0.2s;
+}
+
+.phoneNumber:hover {
+    color: var(--color-navy);
+}
+
+.scheduleText {
+    font-size: 1rem;
+    color: var(--color-text-medium);
+    margin-bottom: 1.5rem;
+}
+
+.scheduleButton {
+    min-width: 80%;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .ctaBlock {
+        order: -1;
+    }
+    .phoneNumber {
+        font-size: 2rem;
+    }
+}

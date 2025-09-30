@@ -1,19 +1,18 @@
-
-// src/components/Home/HeroSection.tsx
+// src/components/Sections/HomeHero.tsx
 import React from 'react';
 import Link from 'next/link';
 import Heading from '@/components/UI/Typography/Heading';
 import Button from '@/components/UI/Button/Button';
-import styles from './HeroSection.module.css';
+import styles from './HomeHero.module.css';
 
-// Assuming you have an Icon component setup, if not, use simple text/emoji
+// Helper Component for Trust Indicators
 const TrustIcon = ({ children }: { children: React.ReactNode }) => (
     <span className={styles.trustItem}>
         {children}
     </span>
 );
 
-const HeroSection: React.FC = () => {
+const HomeHero: React.FC = () => {
     return (
         <section className={styles.hero}>
             <div className={`${styles.container} container`}>
@@ -52,12 +51,9 @@ const HeroSection: React.FC = () => {
                         <TrustIcon>📞 24/7 Emergency Repair</TrustIcon>
                     </div>
                 </div>
-
-                {/* Optional: Add an image or graphic element in the CSS background */}
-                
             </div>
         </section>
     );
 };
 
-export default HeroSection;
+export default HomeHero;
