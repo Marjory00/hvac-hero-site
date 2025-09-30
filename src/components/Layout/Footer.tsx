@@ -1,46 +1,107 @@
-
 // src/components/Layout/Footer.tsx
 import React from 'react';
 import Link from 'next/link';
+// COMMENT: Importing the dedicated CSS module for clean styling
+import styles from './Footer.module.css';
 
-// Define the functional component
+// COMMENT: Define the necessary data structures
+const primaryNav = [
+    { name: 'Services', href: '/services' },
+    // COMMENT: Added Blog and About links for a typical site structure
+    { name: 'About Us', href: '/about' }, 
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact Us', href: '/contact' },
+    { name: 'Portfolio', href: '/projects' },
+];
+
+const legalLinks = [
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
+];
+
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+    const currentYear = new Date().getFullYear();
 
-  return (
-    <footer>
-      <div style={{ padding: 'var(--space-xl)', backgroundColor: 'var(--color-navy)', color: 'white' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-          
-          {/* Section 1: Branding and Copyright */}
-          <div>
-            <h3 style={{ color: 'var(--color-sky-blue)' }}>HVAC Hero Site</h3>
-            <p style={{ fontSize: '0.875rem', marginTop: 'var(--space-sm)' }}>
-              © {currentYear} HVAC Hero. All rights reserved.
-            </p>
-          </div>
+    return (
+        // COMMENT: Apply the main footer style from the CSS module
+        <footer className={styles.footer}>
+            <div className="container">
+                <div className={styles.topRow}>
+                    
+                    {/* Section 1: Branding and Contact Info */}
+                    <div className={styles.brandBlock}>
+                        {/* COMMENT: Logo/Brand Name */}
+                        <Link href="/" className={styles.logo}>
+                            HVAC Hero
+                        </Link>
+                        
+                        <p className={styles.contactItem}>
+                            <strong>Address:</strong> 123 Hero Ave, Anytown, USA
+                        </p>
+                        <p className={styles.contactItem}>
+                            <strong>Phone:</strong> 
+                            <a href="tel:+15551234567" className={styles.phoneLink}> (555) 123-4567</a>
+                        </p>
+                        
+                        {/* COMMENT: Added a small CTA/Social element for completeness */}
+                        <div className={styles.socialIcons}>
+                            {/* Placeholder for social links */}
+                            <Link href="#" aria-label="Facebook">FB</Link>
+                            <Link href="#" aria-label="LinkedIn">IN</Link>
+                        </div>
+                    </div>
 
-          {/* Section 2: Quick Links */}
-          <div>
-            <h4>Quick Links</h4>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li style={{ marginBottom: 'var(--space-xs)' }}><Link href="/services" style={{ color: 'white', textDecoration: 'none' }}>Services</Link></li>
-              <li style={{ marginBottom: 'var(--space-xs)' }}><Link href="/projects" style={{ color: 'white', textDecoration: 'none' }}>Portfolio</Link></li>
-              <li style={{ marginBottom: 'var(--space-xs)' }}><Link href="/contact" style={{ color: 'white', textDecoration: 'none' }}>Contact Us</Link></li>
-            </ul>
-          </div>
-          
-          {/* Section 3: Contact Info (Placeholder) */}
-          <div>
-            <h4>Contact</h4>
-            <p>123 Hero Ave, Anytown, USA</p>
-            <p>Phone: (555) 123-4567</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+                    {/* Section 2: Quick Links */}
+                    <div className={styles.navBlock}>
+                        <h4 className={styles.navTitle}>Quick Links</h4>
+                        <ul className={styles.navList}>
+                            {primaryNav.map((item) => (
+                                <li key={item.name}><Link href={item.href}>{item.name}</Link></li>
+                            ))}
+                        </ul>
+                    </div>
+                    
+                    {/* Section 3: Legal and Licensing */}
+                    <div className={styles.navBlock}>
+                        <h4 className={styles.navTitle}>Legal & Info</h4>
+                        <ul className={styles.navList}>
+                            {legalLinks.map((item) => (
+                                <li key={item.name}><Link href={item.href}>{item.name}</Link></li>
+                            ))}
+                        </ul>
+                        <p className={styles.licenseInfo}>
+                            Licensed & Insured
+                            <br />
+                            Lic. #77777 (MD)
+                        </p>
+                    </div>
+
+                    {/* Section 4: Local SEO/Service Area (New block for clear separation) */}
+                    <div className={styles.serviceAreaBlock}>
+                        <h4 className={styles.navTitle}>Service Area</h4>
+                        <p className={styles.areaText}>
+                            Proudly serving Rockville, Bethesda, Gaithersburg, and all of Montgomery County, MD.
+                        </p>
+                        <Link href="/contact" className={styles.ctaButton}>
+                            Get a Free Estimate
+                        </Link>
+                    </div>
+
+                </div>
+
+                <div className={styles.bottomRow}>
+                    {/* COMMENT: Final Copyright Row */}
+                    <p className={styles.copyright}>
+                        © {currentYear} HVAC Hero. All rights reserved. 
+                    </p>
+                    {/* Placeholder for other bottom-level info */}
+                    <p className={styles.designedBy}>
+                        Website designed by [Your Agency]
+                    </p>
+                </div>
+            </div>
+        </footer>
+    );
 };
 
-// CORRECT: Export the component as the default module export
 export default Footer;

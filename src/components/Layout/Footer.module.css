@@ -1,0 +1,179 @@
+/* src/components/Layout/Footer.module.css */
+
+.footer {
+    /* COMMENT: Fixed background color for visual separation, using a standard dark color as fallback */
+    background-color: var(--color-navy-dark, #1c2b36); 
+    color: var(--color-white, #ffffff);
+    padding: 3rem 0 1.5rem;
+}
+
+.topRow {
+    /* COMMENT: Grid for the four main footer columns */
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    /* Uses a light border for contrast */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); 
+}
+
+/* --- Brand Block Styles (Column 1) --- */
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    /* Uses a contrasting brand color, falling back to a yellow/gold */
+    color: var(--color-accent, #ffc107); 
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contactItem {
+    font-size: 0.95rem;
+    /* Uses a slightly lighter white for secondary text */
+    color: var(--color-text-light, #cccccc); 
+    margin-bottom: 0.5rem;
+}
+
+.contactItem strong {
+    font-weight: 600;
+    color: var(--color-white, #ffffff);
+    margin-right: 0.5rem;
+}
+
+.phoneLink {
+    color: var(--color-white, #ffffff);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.phoneLink:hover {
+    color: var(--color-accent, #ffc107);
+}
+
+.socialIcons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.socialIcons a {
+    color: var(--color-white, #ffffff);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.socialIcons a:hover {
+    color: var(--color-accent, #ffc107);
+}
+
+/* --- Navigation Block Styles (Columns 2 & 3) --- */
+
+.navTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    /* Uses the accent color for titles */
+    color: var(--color-accent-light, #ffd700); 
+    margin-bottom: 1rem;
+}
+
+.navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navList li {
+    margin-bottom: 0.5rem;
+}
+
+.navList a {
+    color: var(--color-text-light, #cccccc);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.navList a:hover {
+    color: var(--color-white, #ffffff);
+}
+
+.licenseInfo {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 1.5rem;
+}
+
+/* --- Service Area Block Styles (Column 4) --- */
+
+.areaText {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-light, #cccccc);
+    margin-bottom: 1rem;
+}
+
+.ctaButton {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    /* CTA button uses the accent color */
+    background-color: var(--color-accent, #ffc107); 
+    color: var(--color-navy-dark, #1c2b36); /* Dark text on bright button */
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-sm, 4px);
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+}
+
+.ctaButton:hover {
+    background-color: var(--color-accent-dark, #e0a800);
+}
+
+/* --- Bottom Row (Copyright & Legal) --- */
+.bottomRow {
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.designedBy {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .topRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .topRow {
+        grid-template-columns: 1fr;
+    }
+    .navBlock, .serviceAreaBlock {
+        padding-top: 1rem;
+        border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    .bottomRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .designedBy {
+        order: 1;
+    }
+}
