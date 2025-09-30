@@ -1,0 +1,159 @@
+/* src/app/about/AboutPage.module.css */
+
+/* General Section Styles */
+.sectionTitle {
+    color: var(--color-primary-dark, #003366);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* --- 1. Hero Section (Mission/Subtitle) --- */
+.heroSection {
+    background-color: var(--color-background-light, #f4f7f9);
+    padding: 3rem 0;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-navy, #001f3f);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.heroSubtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-medium, #6b7280);
+    text-align: center;
+    margin: 1rem auto 0;
+    max-width: 700px;
+}
+
+/* --- 2. Mission and Values Section --- */
+.missionSection {
+    background-color: var(--color-white);
+    padding: 4rem 0;
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for 4 values */
+    gap: 1.5rem;
+}
+
+.valueCard {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg, 12px);
+    border: 1px solid var(--color-border-light, #e0e0e0);
+    background-color: var(--color-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.valueCard:hover {
+    transform: translateY(-5px);
+}
+
+.valueTitle {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- 3. Meet the Team Section --- */
+.teamSection {
+    background-color: var(--color-background-secondary, #f8f9fa);
+    padding: 4rem 0;
+}
+
+.teamSubtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-medium);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.teamGrid {
+    display: grid;
+    /* Responsive team grid: minimum card width of 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.memberCard {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.memberImageWrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid var(--color-accent, #ffc107);
+}
+
+.memberName {
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+    color: var(--color-primary);
+}
+
+.memberTitle {
+    font-style: italic;
+    color: var(--color-text-medium);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.memberBio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+}
+
+
+/* --- 4. Licensing and CTA Section --- */
+.licensingSection {
+    background-color: var(--color-primary, #004c99);
+    color: var(--color-white);
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.licensingTitle {
+    color: var(--color-accent-light, #ffd700);
+    margin-bottom: 1rem;
+}
+
+.licensingText {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .valuesGrid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .heroTitle {
+        font-size: 2.2rem;
+    }
+    .heroSubtitle {
+        font-size: 1.1rem;
+    }
+    .valuesGrid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+}
