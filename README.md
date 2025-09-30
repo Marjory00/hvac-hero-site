@@ -59,7 +59,7 @@ This project addresses three distinct architectural challenges faced when buildi
 The architecture follows Next.js App Router best practices for clear separation of concerns.
 
 ```
-vac-hero-site/
+hvac-hero-site/
 ├── public/                 # Static assets (images, favicons)
 │   └── images/
 │       └── hvac-hero-van.png
