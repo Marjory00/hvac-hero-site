@@ -3,6 +3,8 @@
 // Import the Header and Footer components
 import Footer from '@/components/Layout/Footer';
 import Header from '@/components/Layout/Header'; 
+import ScrollToTopButton from '@/components/UI/ScrollToTopButton'; // <-- NEW IMPORT
+
 // COMMENT: Ensure your global CSS is imported if necessary (e.g., './globals.css')
 import './globals.css'; 
 
@@ -30,6 +32,9 @@ export default function RootLayout({
         
         {/* COMMENT: 3. Global Footer component */}
         <Footer />
+        
+        {/* COMMENT: 4. Global Scroll-to-Top button (Placed outside the main flow, fixed position via CSS) */}
+        <ScrollToTopButton /> 
       </body>
     </html>
   );

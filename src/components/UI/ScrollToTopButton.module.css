@@ -1,0 +1,50 @@
+
+/* src/components/UI/ScrollToTopButton.module.css */
+
+.button {
+    /* COMMENT: Fixed position in the bottom right corner */
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000; /* Ensure it floats above all other content */
+    
+    /* Style */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--color-primary, #004c99);
+    color: var(--color-white, #ffffff);
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    /* Animation: Start hidden and move off-screen */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--color-primary-dark, #003366);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* COMMENT: Class applied when the user scrolls past the threshold */
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 600px) {
+    .button {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+}
