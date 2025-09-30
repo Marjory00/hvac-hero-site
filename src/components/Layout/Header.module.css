@@ -1,62 +1,138 @@
-
 /* src/components/Layout/Header.module.css */
 
 .header {
-  background-color: var(--color-navy); /* Deep blue background */
-  color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: var(--space-md) 0;
-  position: sticky;
-  top: 0;
-  z-index: 500;
+    /* Ensures the header stays visible at the top */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* --- 1. Top Bar Styles (Emergency/Info) --- */
+.topBar {
+    background-color: var(--color-navy-dark, #1c2b36); 
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
 }
 
-.brand {
-  font-size: 1.8rem;
-  font-weight: 900;
-  color: white;
-  text-decoration: none;
+.topContent {
+    display: flex;
+    justify-content: flex-end; /* Align info to the right */
+    align-items: center;
+    gap: 2rem;
 }
 
-.nav {
-  /* Hides navigation on small screens initially (basic responsiveness) */
-  display: block; 
+.topInfo {
+    color: var(--color-text-light, #cccccc);
+    margin: 0;
+}
+
+.topLink {
+    color: var(--color-accent-light, #ffd700);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.topLink:hover {
+    color: var(--color-white, #ffffff);
+}
+
+/* --- 2. Main Navigation Bar Styles --- */
+.mainNav {
+    background-color: var(--color-white, #ffffff);
+    padding: 0.75rem 0; /* Vertical spacing */
+}
+
+.navContent {
+    /* CRITICAL FIX: Ensures Logo, Nav, and CTA are horizontally arranged and centered vertically */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--color-primary, #004c99);
+    text-decoration: none;
+    line-height: 1;
+}
+
+/* Desktop Navigation Container */
+.desktopNav {
+    /* FIX: Arranges navigation links horizontally and centers them within the available space */
+    flex-grow: 1; 
+    display: flex; 
+    justify-content: center; 
+    margin: 0 2rem; 
 }
 
 .navList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: var(--space-lg);
+    /* FIX: Arranges the list items (links) horizontally */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navItem {
+    /* Ensure no unwanted styles from list item */
 }
 
 .navLink {
-  color: white;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  transition: color 0.2s;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-navy, #001f3f);
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent; 
+    transition: color 0.2s, border-bottom-color 0.2s;
+    white-space: nowrap;
 }
 
-.navLink:hover {
-  color: var(--color-sky-blue); /* Hover color */
+.navLink[href="/contact"] {
+    /* Highlight the Contact link */
+    color: var(--color-danger, #dc3545); 
+    font-weight: 700;
 }
 
-/* Hide CTA on very small screens if necessary */
-.cta {
-  display: block;
+.navLink:hover, 
+.navLink:focus {
+    color: var(--color-primary-dark, #003366);
+    border-bottom-color: var(--color-accent, #ffc107);
+}
+
+.ctaWrapper {
+    /* Container for the quote button */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .topInfo:last-child { 
+        display: none; /* Hide license info */
+    }
+}
+
+@media (max-width: 900px) {
+    .navList {
+        gap: 0.75rem;
+    }
+    .navLink {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 768px) {
-  /* Basic mobile adjustment: reduce spacing */
-  .navList {
-    gap: var(--space-md);
-  }
+    .desktopNav {
+        display: none; /* Hide the full nav */
+    }
+    .navContent {
+        justify-content: space-around; /* Space out Logo and CTA */
+    }
+    .topContent {
+        justify-content: center;
+        gap: 1rem;
+    }
 }
