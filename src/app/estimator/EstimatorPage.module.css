@@ -1,78 +1,235 @@
 /* src/app/estimator/EstimatorPage.module.css */
 
-/* General Layout */
-.header {
+/* --- General Layout & Typography --- */
+.hero {
+    padding: 3rem 0 2rem;
     text-align: center;
-    max-width: 900px;
-    margin: 0 auto 3rem;
 }
 
 .pageTitle {
     font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary-dark, #003366); 
     margin-bottom: 0.5rem;
-    color: var(--color-primary-dark);
 }
 
-.pageSubtitle {
+.introText {
     font-size: 1.15rem;
-    color: var(--color-text-light);
+    /* FIX: Increase max-width for wider appearance */
+    max-width: 950px; 
+    margin: 0 auto;
+    color: var(--color-text-light, #777);
 }
 
-/* Two-column grid for Form and Sidebar */
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary, #004c99);
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.sectionSubtitle {
+    text-align: center;
+    /* FIX: Increase max-width for wider appearance */
+    max-width: 950px; 
+    margin: 0 auto 3rem;
+    font-size: 1.05rem;
+    color: var(--color-text-light, #777);
+}
+
+/* --- Estimator/Calculator Section Layout (High Visual Priority) --- */
+.calculatorSection {
+    background-color: var(--color-off-white, #f7f7f7);
+    padding: 4rem 0 5rem;
+    border-top: 5px solid var(--color-primary, #004c99);
+}
+
 .contentGrid {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Form takes 2/3, Sidebar takes 1/3 */
+    grid-template-columns: 2fr 1fr; 
     gap: 3rem;
     align-items: start;
+    margin-top: 2rem;
 }
 
-/* Sidebar Box Styling */
-.sidebar > div {
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    margin-bottom: 2rem;
+/* --- Sidebar Styling (Clean and Distinct) --- */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .disclaimerBox {
-    background-color: var(--color-warning-light, #fffbe6); /* Light yellow for caution */
-    border: 1px solid var(--color-warning-dark, #ffc107);
+    background-color: var(--color-warning-light, #fff8e1);
+    border-left: 6px solid var(--color-accent, #ff6600); 
+    padding: 1.5rem;
+    border-radius: var(--radius-md, 8px);
+    /* FIX: Softer, more diffused shadow (H-offset V-offset Blur-radius Spread-radius Color) */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); 
 }
 
+
+/* AFTER: Matches background, looks integrated */
 .scheduleProcessBox {
-    background-color: var(--color-off-white, #f9f9f9);
-    border: 1px solid var(--color-border-light, #e0e0e0);
+    /* Retaining the changes to remove the card look from the sidebar */
+    background-color: transparent; 
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none; 
 }
 
 .boxTitle {
-    font-size: 1.5rem;
-    color: var(--color-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary-dark, #003366);
     margin-bottom: 1rem;
 }
 
-.disclaimerBox p {
-    line-height: 1.6;
-}
-
 .processList {
-    padding-left: 20px;
+    list-style-type: none;
+    padding-left: 0;
     margin-top: 1rem;
 }
 
 .processList li {
-    margin-bottom: 1rem;
+    background: url('/icons/check-primary.svg') no-repeat left center; 
+    background-size: 18px;
+    padding-left: 28px;
+    margin-bottom: 12px;
     font-weight: 500;
 }
 
 .smallText {
     font-size: 0.9rem;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     font-style: italic;
-    color: var(--color-text-light);
+    color: var(--color-text-light, #777);
 }
 
-/* Mobile Responsiveness */
+/* --- Tier Specifications Table (Modern, Clean Design) --- */
+.specifications {
+    padding: 5rem 0;
+    background-color: var(--color-white);
+}
+
+.tierSpecs {
+    overflow-x: auto; 
+    margin-top: 3rem;
+}
+
+.specTable {
+    width: 100%;
+    /* No change here, min-width forces table readability */
+    min-width: 800px; 
+    border-collapse: collapse;
+    border: 2px solid var(--color-primary, #004c99);
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
+}
+
+.tableHeader {
+    background-color: var(--color-primary, #004c99);
+    color: var(--color-white);
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 1rem;
+    text-align: center;
+    grid-column: 1 / -1; 
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--color-border, #e0e0e0);
+}
+
+.tableCellHeader {
+    background-color: var(--color-secondary, #f0f7ff);
+    color: var(--color-primary-dark, #003366);
+    font-weight: 800;
+    padding: 1rem;
+    text-align: center;
+    border-right: 1px solid var(--color-border, #e0e0e0);
+}
+
+.tableCell {
+    padding: 1rem;
+    color: var(--color-text-dark, #333);
+    border-right: 1px solid var(--color-border, #e0e0e0);
+    text-align: center;
+    font-weight: 500;
+}
+.tableCell:first-child {
+    text-align: left;
+    font-weight: 600;
+}
+
+.specTable .tableRow:not(:first-child) .tableCell:first-child {
+    background-color: var(--color-off-white, #fafafa);
+    color: var(--color-primary-dark, #003366);
+}
+
+.specTable .tableRow:nth-child(even) .tableCell {
+    background-color: var(--color-off-white, #f9f9f9);
+}
+
+
+/* --- Solution Cards --- */
+.solutions {
+    padding: 5rem 0;
+    text-align: center;
+    background-color: var(--color-secondary, #f0f7ff);
+}
+
+.solutionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.solutionCard {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--radius-md, 8px);
+    /* FIX: Softer, more diffused shadow */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.solutionCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Enhanced hover shadow */
+}
+
+.solutionCard h3 {
+    color: var(--color-accent, #ff6600);
+    margin-bottom: 0.75rem;
+}
+
+.solutionCard p {
+    color: var(--color-text-dark, #333);
+    line-height: 1.6;
+}
+
+/* --- Mobile Responsiveness --- */
 @media (max-width: 992px) {
     .contentGrid {
-        grid-template-columns: 1fr; /* Stack columns vertically on smaller screens */
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+    }
+
+    .sidebar {
+        order: -1; 
+    }
+
+    .pageTitle {
+        font-size: 2rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.75rem;
     }
 }

@@ -1,5 +1,7 @@
 // src/components/EstimatorForm/EstimatorForm.tsx
 
+"use client"; // <--- ADD THIS LINE AT THE VERY TOP
+
 import React, { useState } from 'react';
 import Button from '@/components/UI/Button/Button';
 import styles from './EstimatorForm.module.css'; // You'll need to create this CSS file
