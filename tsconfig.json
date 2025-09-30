@@ -6,7 +6,6 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    // other options...
     "allowImportingTsExtensions": true,
     "strict": true,
     "noEmit": true,
@@ -21,25 +20,28 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".", // Must be set to the project root
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"], 
       "@/lib/*": ["./src/lib/*"],
       
-      //FIX: This path alias is now correctly nested inside the "paths" object
-      "@/logic/pricing": [
-        "src/lib/private/pricing_engine.ts",
-        "src/lib/private_stubs/pricing_engine.ts" 
+      // FIX: Use a wildcard (*) in the alias key to allow multiple target paths.
+      // The compiler will check these paths in order.
+      // The first matching path is used.
+      
+      "@/logic/pricing/*": [
+        "src/lib/private/pricing_engine.ts", // Local/Private Logic (Priority 1)
+        "src/lib/private_stubs/pricing_engine.ts" // Public Stub (Priority 2)
       ],
-        // NEW ALIAS: Validation Logic
-      "@/logic/validation": [
-        "src/lib/private/complex_validation.ts",
-        "src/lib/private_stubs/complex_validation.ts"
-      ],
+      
+      "@/logic/validation/*": [
+        "src/lib/private/complex_validation.ts", // Local/Private Logic (Priority 1)
+        "src/lib/private_stubs/complex_validation.ts" // Public Stub (Priority 2)
+      ]
     }
   },
   
-  // FIX: The "include" and "exclude" arrays are now correctly placed outside the "compilerOptions" block
+  // These arrays are correctly placed outside of compilerOptions
   "include": [
     "next-env.d.ts", 
     "**/*.ts", 
