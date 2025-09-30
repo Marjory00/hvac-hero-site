@@ -26,18 +26,16 @@
       "@/*": ["./src/*"], 
       "@/lib/*": ["./src/lib/*"],
       
-      // FIX: The alias key uses '/*'. The target paths MUST also use '/*'.
-      // This tells the compiler that the remaining string from the import (e.g., 'pricing_engine') 
-      // should be appended to the target path.
-      
+      // CORRECT: Wildcards in key and value array to allow multiple paths (private/stub)
       "@/logic/pricing/*": [
-        "src/lib/private/*", // FIX: Changed from .ts file name to a directory wildcard
-        "src/lib/private_stubs/*" // FIX: Changed from .ts file name to a directory wildcard
+        "src/lib/private/*", 
+        "src/lib/private_stubs/*"
       ],
       
+      // CORRECT: Wildcards in key and value array
       "@/logic/validation/*": [
-        "src/lib/private/*", // FIX: Changed from .ts file name to a directory wildcard
-        "src/lib/private_stubs/*" // FIX: Changed from .ts file name to a directory wildcard
+        "src/lib/private/*", 
+        "src/lib/private_stubs/*"
       ]
     }
   },
