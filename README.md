@@ -1,4 +1,4 @@
-# 🛠️ Project: HVAC Hero – Modern Web Development Case Study
+#  Project: HVAC Hero – Modern Web Development Case Study
 
 **Portfolio Project By: Marjory D. Marquez, Software Engineer**
 
@@ -6,7 +6,7 @@ This project is a comprehensive **case study** demonstrating the architecture an
 
 ***
 
-## 🚀 Key Technologies & Technical Features
+##  Key Technologies & Technical Features
 
 The application leverages a modern, full-stack approach, highlighting proficiency in the following core technologies:
 
@@ -21,7 +21,7 @@ The application leverages a modern, full-stack approach, highlighting proficienc
 
 ***
 
-## 💡 Engineering Case Study: Core Challenges & Solutions
+##  Engineering Case Study: Core Challenges & Solutions
 
 This project addresses three distinct architectural challenges faced when building professional, scalable applications: security, cross-component communication, and type safety.
 
@@ -54,7 +54,7 @@ This project addresses three distinct architectural challenges faced when buildi
 
 ***
 
-## 🌐 Project Structure
+##  Project Structure
 
 The architecture follows Next.js App Router best practices for clear separation of concerns.
 
@@ -74,8 +74,8 @@ hvac-hero-site/
 │   ├── lib/
 │   │   ├── data/           # Mock data (posts, services, projects)
 │   │   ├── store/          # Zustand store definitions (uiStore.ts)
-│   │   ├── private/        # 🔒 HIDDEN - Actual proprietary logic (.gitignore-d)
-│   │   └── private_stubs/  # ✅ PUBLIC - Placeholder logic for review
+│   │   ├── private/        #  HIDDEN - Actual proprietary logic (.gitignore-d)
+│   │   └── private_stubs/  # PUBLIC - Placeholder logic for review
 │   └── styles/             # Global CSS variables and utility classes
 ├── .gitignore              # Hides sensitive files and environment variables
 └── tsconfig.json           # Configures proprietary logic alias mappings
@@ -84,7 +84,7 @@ hvac-hero-site/
 
 ***
 
-## 🚀 Installation & Running
+##  Installation & Running
 
 1.  **Clone the repository:**
     ```bash
